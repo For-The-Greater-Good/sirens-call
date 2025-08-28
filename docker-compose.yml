@@ -25,5 +25,15 @@ services:
     environment:
       - NODE_ENV=production
 
+  # Cloudflare Tunnel
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
+    depends_on:
+      - prod
+
 volumes:
   node_modules:
