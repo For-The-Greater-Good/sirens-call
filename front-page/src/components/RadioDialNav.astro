@@ -169,6 +169,7 @@ const localizedStations = stations.map(station => ({
   .radio-dial {
     flex: 1;
     position: relative;
+    overflow: hidden;
   }
   
   .dial-track {
@@ -220,8 +221,8 @@ const localizedStations = stations.map(station => ({
     right: 0;
     transform: translateY(-50%);
     display: flex;
-    justify-content: space-around;
-    padding: 0 var(--space-lg);
+    justify-content: space-evenly;
+    padding: 0 var(--space-sm);
     z-index: 3;
   }
   
@@ -233,15 +234,18 @@ const localizedStations = stations.map(station => ({
     color: var(--vintage-cream);
     transition: all 0.3s ease;
     position: relative;
-    padding: var(--space-xs);
+    padding: 2px;
+    flex-shrink: 1;
+    min-width: 0;
   }
   
   .station-label {
-    font-size: var(--font-scale-base);
+    font-size: calc(var(--font-scale-sm) * 0.9);
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     text-shadow: 2px 2px 0 var(--ink-black);
+    white-space: nowrap;
   }
   
   .station-freq {

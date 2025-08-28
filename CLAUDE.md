@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Repository Overview
 
 Sirens Call contains two separate Astro-based websites for the For The Greater Good (FTGG) organization:
-- **front-page**: Main pirate-themed public website (for-the-gg.org) with vintage maritime aesthetic
+- **front-page**: Main pirate-themed public website (www.for-the-gg.org) with vintage maritime aesthetic
 - **docs-site**: Technical documentation using Starlight (docs.for-the-gg.org)
 
 ## Commands

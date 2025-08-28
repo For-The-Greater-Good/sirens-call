@@ -3,7 +3,7 @@
 ## Overview
 
 This repository contains two separate websites that run as independent Docker containers:
-- **front-page**: Main pirate-themed website (for-the-gg.org)
+- **front-page**: Main pirate-themed website (www.for-the-gg.org)
 - **docs-site**: Documentation site with Starlight (docs.for-the-gg.org)
 
 ## Production Setup
@@ -25,7 +25,7 @@ docker compose up front-page-prod docs-site-prod -d
 1. Create a single tunnel in Cloudflare Zero Trust dashboard
 
 2. Configure public hostnames for the tunnel:
-   - `for-the-gg.org` → Service: `http://front-page-prod:80`
+   - `www.for-the-gg.org` → Service: `http://front-page-prod:80`
    - `docs.for-the-gg.org` → Service: `http://docs-site-prod:80`
 
 3. Set the tunnel token in your environment:
