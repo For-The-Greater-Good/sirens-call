@@ -1,0 +1,125 @@
+---
+export interface Props {
+  count?: number;
+  color?: 'rust' | 'teal' | 'gold' | 'ink';
+  speed?: 'slow' | 'normal' | 'fast';
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const { 
+  count = 3,
+  color = 'rust',
+  speed = 'normal',
+  size = 'md'
+} = Astro.props;
+
+const waves = Array.from({ length: count }, (_, i) => i);
+
+const speedClass = {
+  slow: 'wave-slow',
+  normal: 'wave-normal',
+  fast: 'wave-fast'
+};
+
+const sizeClass = {
+  sm: 'wave-sm',
+  md: 'wave-md',
+  lg: 'wave-lg'
+};
+
+const colorClass = {
+  rust: 'wave-rust',
+  teal: 'wave-teal',
+  gold: 'wave-gold',
+  ink: 'wave-ink'
+};
+---
+
+<div class={`radio-waves ${sizeClass[size]}`}>
+  {waves.map((index) => (
+    <div 
+      class={`wave ${speedClass[speed]} ${colorClass[color]}`}
+      style={`animation-delay: ${index * 1}s`}
+    ></div>
+  ))}
+</div>
+
+<style>
+  .radio-waves {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .wave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 50%;
+    opacity: 0;
+  }
+  
+  /* Size Variants */
+  .wave-sm .wave {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .wave-md .wave {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .wave-lg .wave {
+    width: 400px;
+    height: 400px;
+  }
+  
+  /* Color Variants */
+  .wave-rust {
+    border-color: var(--rust-orange);
+  }
+  
+  .wave-teal {
+    border-color: var(--ocean-teal);
+  }
+  
+  .wave-gold {
+    border-color: var(--mustard-gold);
+  }
+  
+  .wave-ink {
+    border-color: var(--ink-black);
+  }
+  
+  /* Speed Variants */
+  .wave-slow {
+    animation: expand-wave 4s ease-out infinite;
+  }
+  
+  .wave-normal {
+    animation: expand-wave 3s ease-out infinite;
+  }
+  
+  .wave-fast {
+    animation: expand-wave 2s ease-out infinite;
+  }
+  
+  @keyframes expand-wave {
+    0% {
+      transform: translate(-50%, -50%) scale(0.5);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(2);
+      opacity: 0;
+    }
+  }
+</style>

@@ -1,0 +1,185 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import VintageBadge from '../vintage/VintageBadge.astro';
+
+const { data } = Astro.props;
+const { title = 'Documentation', tagline, hero } = data;
+
+// Extract hero data if available
+const heroTitle = hero?.title || title;
+const heroTagline = hero?.tagline || tagline;
+const actions = hero?.actions || [];
+---
+
+<div class="docs-hero">
+  <div class="hero-badge-container">
+    <VintageBadge 
+      label="103.5 FM" 
+      sublabel="DOCS"
+      variant="rust"
+      size="large"
+      icon="book"
+    />
+  </div>
+  
+  <div class="hero-content">
+    <h1 class="hero-title">{heroTitle}</h1>
+    {heroTagline && <p class="hero-tagline">{heroTagline}</p>}
+    
+    {actions.length > 0 && (
+      <div class="hero-actions">
+        {actions.map((action: any) => (
+          <a 
+            href={action.link} 
+            class:list={['hero-action', action.variant === 'minimal' && 'minimal']}
+          >
+            {action.icon && <span class="action-icon">{action.icon}</span>}
+            {action.text}
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+  
+  <div class="hero-decoration">
+    <div class="tech-lines">
+      {Array.from({ length: 5 }, (_, i) => (
+        <div class="tech-line" style={`animation-delay: ${i * 0.1}s`}></div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .docs-hero {
+    position: relative;
+    padding: 4rem 0;
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, var(--rust-100) 0%, transparent 100%);
+    border-bottom: 4px double var(--rust);
+    overflow: hidden;
+  }
+  
+  .hero-badge-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .hero-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0 0 1rem 0;
+    text-shadow: 2px 2px 0 var(--rust-100);
+  }
+  
+  .hero-tagline {
+    font-family: var(--font-mono);
+    font-size: 1.125rem;
+    color: var(--rust);
+    margin: 0 auto 2rem;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+  
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .hero-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--gold);
+    color: var(--ink);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 2px solid var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+    transition: all 0.2s ease;
+  }
+  
+  .hero-action:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--ink);
+  }
+  
+  .hero-action.minimal {
+    background: transparent;
+    border-color: var(--rust);
+    color: var(--rust);
+    box-shadow: 3px 3px 0 var(--rust-200);
+  }
+  
+  .hero-action.minimal:hover {
+    background: var(--rust-100);
+  }
+  
+  .action-icon {
+    font-size: 1.25rem;
+  }
+  
+  .hero-decoration {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    opacity: 0.1;
+    pointer-events: none;
+  }
+  
+  .tech-lines {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 10px;
+  }
+  
+  .tech-line {
+    width: 4px;
+    height: 80px;
+    background: var(--ink);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; height: 80px; }
+    50% { opacity: 1; height: 100px; }
+  }
+  
+  @media (max-width: 768px) {
+    .docs-hero {
+      padding: 2rem 1rem;
+    }
+    
+    .hero-decoration {
+      display: none;
+    }
+  }
+</style>

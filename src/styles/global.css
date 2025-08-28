@@ -1,0 +1,9 @@
+/* Font Imports for Chunky Typography - must be first */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@900&display=block');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=block');
+
+/* Import Tailwind CSS */
+@import "tailwindcss";
+
+/* Import Vintage Design System */
+@import './vintage.css';

@@ -1,0 +1,106 @@
+---
+const currentPath = Astro.url.pathname;
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/technology', label: 'Technology' },
+];
+---
+
+<nav class="fixed top-0 w-full bg-white shadow-lg z-50">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="/" class="flex items-center space-x-3">
+          <img 
+            src="/images/ftgg-logo.png" 
+            alt="FTGG Logo" 
+            class="h-10 w-10 rounded-full"
+          />
+          <span class="text-xl font-bold text-gray-900">
+            For The Greater Good
+          </span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        {links.map((link) => (
+          <a 
+            href={link.href} 
+            class={`
+              font-medium transition-colors duration-200
+              ${currentPath === link.href 
+                ? 'text-blue-600 border-b-2 border-blue-600' 
+                : 'text-gray-700 hover:text-blue-600'
+              }
+            `}
+          >
+            {link.label}
+          </a>
+        ))}
+        <a 
+          href="https://github.com/For-The-Greater-Good" 
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200"
+        >
+          View on GitHub
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button 
+          type="button" 
+          class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100"
+          aria-label="Main menu"
+          aria-expanded="false"
+        >
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu hidden md:hidden">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      {links.map((link) => (
+        <a 
+          href={link.href} 
+          class={`
+            block px-3 py-2 rounded-md text-base font-medium
+            ${currentPath === link.href 
+              ? 'text-blue-600 bg-blue-50' 
+              : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
+            }
+          `}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a 
+        href="https://github.com/For-The-Greater-Good" 
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+      >
+        View on GitHub
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const mobileMenuButton = document.querySelector('.mobile-menu-button');
+  const mobileMenu = document.querySelector('.mobile-menu');
+
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>

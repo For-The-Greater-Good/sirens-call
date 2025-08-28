@@ -1,0 +1,143 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/TableOfContents.astro';
+---
+
+<div class="vintage-toc">
+  <div class="toc-header">
+    <span class="toc-icon">📻</span>
+    <span class="toc-title">ON THIS PAGE</span>
+    <span class="toc-freq">103.5</span>
+  </div>
+  <div class="toc-content">
+    <Default {...Astro.props} />
+  </div>
+  <div class="toc-footer">
+    <div class="static-line"></div>
+  </div>
+</div>
+
+<style>
+  .vintage-toc {
+    background: var(--background);
+    border: 2px solid var(--rust-200);
+    border-radius: 0;
+    overflow: hidden;
+  }
+  
+  .toc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: var(--rust);
+    color: var(--background);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+  }
+  
+  .toc-icon {
+    font-size: 1rem;
+  }
+  
+  .toc-freq {
+    color: var(--gold);
+  }
+  
+  .toc-content {
+    padding: 1rem;
+  }
+  
+  :global(.vintage-toc nav) {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+  
+  :global(.vintage-toc nav ul) {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  :global(.vintage-toc nav li) {
+    margin: 0;
+  }
+  
+  :global(.vintage-toc nav a) {
+    display: block;
+    padding: 0.375rem 0;
+    color: var(--ink);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+    padding-left: 1.25rem;
+  }
+  
+  :global(.vintage-toc nav a::before) {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--rust-200);
+    transition: all 0.2s ease;
+  }
+  
+  :global(.vintage-toc nav a:hover) {
+    color: var(--gold);
+  }
+  
+  :global(.vintage-toc nav a:hover::before) {
+    color: var(--gold);
+    transform: translateX(3px);
+  }
+  
+  :global(.vintage-toc nav a[aria-current="true"]) {
+    color: var(--gold);
+    font-weight: bold;
+  }
+  
+  :global(.vintage-toc nav a[aria-current="true"]::before) {
+    content: '▶';
+    color: var(--gold);
+  }
+  
+  /* Nested levels */
+  :global(.vintage-toc nav ul ul) {
+    padding-left: 1rem;
+    margin-top: 0.25rem;
+    border-left: 1px dashed var(--rust-200);
+  }
+  
+  :global(.vintage-toc nav ul ul a) {
+    font-size: 0.8125rem;
+  }
+  
+  .toc-footer {
+    padding: 0.5rem 1rem;
+    background: var(--rust-100);
+    position: relative;
+    height: 20px;
+  }
+  
+  .static-line {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    right: 1rem;
+    height: 2px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--rust-200) 0px,
+      var(--rust-200) 5px,
+      transparent 5px,
+      transparent 10px
+    );
+    animation: staticMove 2s linear infinite;
+  }
+  
+  @keyframes staticMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(10px); }
+  }
+</style>

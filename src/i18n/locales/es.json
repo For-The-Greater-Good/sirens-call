@@ -1,0 +1,33 @@
+{
+  "site": {
+    "title": "Radio FTGG",
+    "tagline": "Transmitiendo Seguridad Alimentaria Desde 2024",
+    "description": "Por El Bien Mayor - Transmitiendo Seguridad Alimentaria Desde 2024"
+  },
+  "nav": {
+    "home": "INICIO",
+    "about": "ACERCA",
+    "technology": "TECH",
+    "docs": "DOCS",
+    "github": "GITHUB",
+    "frequencies": {
+      "home": "19.3 FM",
+      "about": "17.8 FM",
+      "technology": "96.9 FM",
+      "docs": "84.0 FM",
+      "github": "20.8 FM"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "POR EL\nBIEN MAYOR",
+      "frequency": "88.5 FM",
+      "tagline": "Transmitiendo Seguridad Alimentaria Desde 2024"
+    },
+    "mission": {
+      "title": "UNIFICANDO RECURSOS PÚBLICOS",
+      "text": "Somos especialistas en agregación de recursos con una misión simple: hacer que la información pública existente sea verdaderamente accesible. Conectamos recursos dispersos a través de una interfaz única e intuitiva, porque encontrar ayuda no debería requerir buscar en docenas de sistemas desconectados.",
+      "quote": "¡Los datos públicos deben ser para todos, no solo para quienes conocen los mapas secretos!"
+    }
+  }
+}

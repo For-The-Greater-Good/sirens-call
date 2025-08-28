@@ -1,0 +1,238 @@
+---
+title: API Overview
+description: HSDS v3.1.1 compliant REST API for accessing food security data
+---
+
+import { Code, Tabs, TabItem } from '@astrojs/starlight/components';
+
+# API Overview
+
+The Pantry Pirate Radio API provides HSDS v3.1.1 compliant REST endpoints for accessing aggregated food security data. All endpoints are read-only and require no authentication for public access.
+
+## Base URL
+
+```
+http://localhost:8000/api/v1
+```
+
+## Response Format
+
+All responses follow the HSDS v3.1.1 specification with additional metadata:
+
+```json
+{
+  "data": [...],           // Main response data
+  "metadata": {
+    "page": 1,
+    "per_page": 20,
+    "total": 150,
+    "confidence_score": 85.5,
+    "last_updated": "2024-11-15T12:00:00Z"
+  },
+  "links": {
+    "self": "/api/v1/organizations?page=1",
+    "next": "/api/v1/organizations?page=2",
+    "prev": null
+  }
+}
+```
+
+## Core Endpoints
+
+### Organizations
+
+List food resource organizations with comprehensive details.
+
+<Tabs>
+  <TabItem label="Request">
+    ```http
+    GET /api/v1/organizations
+    ```
+  </TabItem>
+  <TabItem label="Response">
+    ```json
+    {
+      "data": [
+        {
+          "id": "org_123",
+          "name": "Community Food Bank",
+          "description": "Providing food assistance",
+          "email": "info@foodbank.org",
+          "website": "https://foodbank.org",
+          "tax_status": "501c3",
+          "confidence_score": 92.5
+        }
+      ]
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+### Locations
+
+Get physical service locations with geographic data.
+
+<Tabs>
+  <TabItem label="Request">
+    ```http
+    GET /api/v1/locations
+    ```
+  </TabItem>
+  <TabItem label="Parameters">
+    ```typescript
+    {
+      latitude?: number;    // Center latitude
+      longitude?: number;   // Center longitude
+      radius?: number;     // Search radius in miles
+      page?: number;       // Page number (default: 1)
+      per_page?: number;   // Items per page (default: 20)
+    }
+    ```
+  </TabItem>
+  <TabItem label="Response">
+    ```json
+    {
+      "data": [
+        {
+          "id": "loc_456",
+          "organization_id": "org_123",
+          "name": "Downtown Pantry",
+          "address": {
+            "address_1": "123 Main St",
+            "city": "Springfield",
+            "state_province": "IL",
+            "postal_code": "62701"
+          },
+          "latitude": 39.7817,
+          "longitude": -89.6501
+        }
+      ]
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+### Services
+
+Access detailed service information and schedules.
+
+<Tabs>
+  <TabItem label="Request">
+    ```http
+    GET /api/v1/services
+    ```
+  </TabItem>
+  <TabItem label="Response">
+    ```json
+    {
+      "data": [
+        {
+          "id": "svc_789",
+          "organization_id": "org_123",
+          "name": "Emergency Food Distribution",
+          "description": "Weekly food distribution",
+          "status": "active",
+          "interpretation_services": ["Spanish", "ASL"],
+          "application_process": "Walk-in",
+          "fees_description": "Free"
+        }
+      ]
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+## Geographic Search
+
+The API provides powerful geographic search capabilities:
+
+### Radius Search
+
+Find resources within a specific radius:
+
+```http
+GET /api/v1/locations?latitude=40.7128&longitude=-74.0060&radius=5
+```
+
+### Bounding Box Search
+
+Search within geographic boundaries:
+
+```http
+GET /api/v1/locations?bbox=-74.1,40.6,-73.9,40.8
+```
+
+### State/City Search
+
+Filter by administrative boundaries:
+
+```http
+GET /api/v1/locations?state=NY&city=Brooklyn
+```
+
+## Pagination
+
+All list endpoints support pagination:
+
+```http
+GET /api/v1/organizations?page=2&per_page=50
+```
+
+- `page`: Page number (default: 1)
+- `per_page`: Items per page (default: 20, max: 100)
+
+## Rate Limiting
+
+Public endpoints have generous rate limits:
+
+- **1000 requests per hour** per IP address
+- **100 concurrent connections** per IP
+- No authentication required for public data
+
+## Error Handling
+
+The API uses standard HTTP status codes:
+
+| Code | Meaning | Example |
+|------|---------|---------|
+| 200 | Success | Normal response |
+| 400 | Bad Request | Invalid parameters |
+| 404 | Not Found | Resource doesn't exist |
+| 429 | Too Many Requests | Rate limit exceeded |
+| 500 | Internal Server Error | Server error |
+
+Error response format:
+
+```json
+{
+  "error": {
+    "code": "invalid_parameter",
+    "message": "Invalid latitude: must be between -90 and 90",
+    "field": "latitude"
+  }
+}
+```
+
+## Data Quality Indicators
+
+Each response includes confidence scoring:
+
+- **90-100**: Verified, complete data
+- **70-89**: High confidence, minor gaps
+- **50-69**: Moderate confidence, some uncertainty
+- **30-49**: Low confidence, significant gaps
+- **Less than 30**: Rejected (not included in results)
+
+## OpenAPI Specification
+
+Interactive API documentation is available at:
+
+```
+http://localhost:8000/docs
+```
+
+The full OpenAPI schema can be accessed at:
+
+```
+http://localhost:8000/openapi.json
+```

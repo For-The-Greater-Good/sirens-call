@@ -1,0 +1,68 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+---
+
+<div class="vintage-site-title">
+  <a href="/docs" class="title-link">
+    <span class="freq-badge">103.5</span>
+    <span class="title-text">
+      <span class="title-main">FTGG DOCS</span>
+      <span class="title-sub">Technical Reference</span>
+    </span>
+  </a>
+</div>
+
+<style>
+  .vintage-site-title {
+    padding: 0.5rem 0;
+  }
+  
+  .title-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  
+  .title-link:hover {
+    transform: translateX(2px);
+  }
+  
+  .freq-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: bold;
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    box-shadow: 2px 2px 0 var(--rust-200);
+  }
+  
+  .title-text {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .title-main {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  
+  .title-sub {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--rust);
+    letter-spacing: 0.05em;
+  }
+</style>

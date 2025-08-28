@@ -1,0 +1,177 @@
+---
+export interface Props {
+  title?: string;
+  number?: string | number;
+  label?: string;
+  color?: 'rust' | 'teal' | 'gold' | 'ink';
+  rotate?: boolean;
+  stamp?: boolean;
+}
+
+const { 
+  title, 
+  number,
+  label,
+  color = 'rust',
+  rotate = true,
+  stamp = false
+} = Astro.props;
+
+const randomRotation = rotate ? (Math.random() - 0.5) * 2 : 0;
+---
+
+<div 
+  class={`print-block print-block-${color} ${stamp ? 'print-stamp' : ''}`}
+  style={`--rotation: ${randomRotation}deg`}
+>
+  {stamp && <div class="stamp-mark">VERIFIED</div>}
+  
+  {title && (
+    <h3 class="block-title">{title}</h3>
+  )}
+  
+  {number && (
+    <div class="block-number">{number}</div>
+  )}
+  
+  {label && (
+    <p class="block-label">{label}</p>
+  )}
+  
+  <div class="block-content">
+    <slot />
+  </div>
+  
+  <div class="print-texture"></div>
+</div>
+
+<style>
+  .print-block {
+    background: var(--paper-light);
+    border: var(--border-thick);
+    padding: var(--space-lg);
+    position: relative;
+    box-shadow: var(--shadow-print);
+    transform: rotate(var(--rotation));
+    transition: transform 0.3s ease;
+    overflow: hidden;
+  }
+  
+  .print-block::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    z-index: -1;
+    opacity: 0.3;
+    transform: translate(var(--print-offset-x), var(--print-offset-y));
+  }
+  
+  /* Color Variants */
+  .print-block-rust::before {
+    background: var(--rust-orange);
+  }
+  
+  .print-block-teal::before {
+    background: var(--ocean-teal);
+  }
+  
+  .print-block-gold::before {
+    background: var(--mustard-gold);
+  }
+  
+  .print-block-ink::before {
+    background: var(--ink-black);
+  }
+  
+  .print-block:hover {
+    transform: rotate(0deg) scale(1.02);
+  }
+  
+  /* Stamp Variant */
+  .print-stamp {
+    border-style: dashed;
+    border-width: 3px;
+    background-image: 
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 10px,
+        rgba(0, 0, 0, 0.02) 10px,
+        rgba(0, 0, 0, 0.02) 20px
+      );
+  }
+  
+  .stamp-mark {
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-sm);
+    background: var(--rust-orange);
+    color: var(--vintage-cream);
+    padding: var(--space-xs) var(--space-sm);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    transform: rotate(15deg);
+    box-shadow: 2px 2px 0 var(--ink-black);
+    font-size: var(--font-scale-xs);
+  }
+  
+  .block-title {
+    font-size: var(--font-scale-lg);
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-sm);
+    color: var(--ink-black);
+    text-shadow: 1px 1px 0 var(--rust-orange);
+  }
+  
+  .block-number {
+    font-size: var(--font-scale-3xl);
+    font-weight: 900;
+    line-height: 0.9;
+    margin: var(--space-sm) 0;
+    color: var(--ink-black);
+    text-shadow: 3px 3px 0 var(--mustard-gold);
+    letter-spacing: -0.04em;
+  }
+  
+  .block-label {
+    font-size: var(--font-scale-base);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    opacity: 0.8;
+    margin-top: var(--space-xs);
+  }
+  
+  .block-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Print Texture Overlay */
+  .print-texture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='0.5' fill='black' opacity='0.05'/%3E%3C/svg%3E");
+    background-size: 4px 4px;
+    mix-blend-mode: multiply;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .print-block {
+      transform: rotate(0deg);
+    }
+    
+    .block-number {
+      font-size: var(--font-scale-2xl);
+    }
+  }
+</style>

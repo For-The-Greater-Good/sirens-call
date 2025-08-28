@@ -1,0 +1,111 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-gray-900 text-white">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- Brand -->
+      <div class="col-span-1 md:col-span-2">
+        <div class="flex items-center space-x-3 mb-4">
+          <img 
+            src="/images/ftgg-logo.png" 
+            alt="FTGG Logo" 
+            class="h-12 w-12 rounded-full"
+          />
+          <span class="text-2xl font-bold">For The Greater Good</span>
+        </div>
+        <p class="text-gray-400 max-w-md">
+          Liberating food security data for public good. 
+          All data outputs released to public domain. Code licensed for 
+          non-commercial use only - free for communities, not for profit.
+        </p>
+      </div>
+
+      <!-- Projects -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Our Projects</h3>
+        <ul class="space-y-2">
+          <li>
+            <a 
+              href="https://github.com/For-The-Greater-Good/pantry-pirate-radio" 
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-400 hover:text-white transition-colors"
+            >
+              Pantry Pirate Radio
+            </a>
+          </li>
+          <li>
+            <a 
+              href="https://github.com/For-The-Greater-Good/HAARRRvest" 
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-400 hover:text-white transition-colors"
+            >
+              HAARRRvest
+            </a>
+          </li>
+          <li>
+            <a 
+              href="https://map.for-the-gg.org" 
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-400 hover:text-white transition-colors"
+            >
+              Interactive Map
+            </a>
+          </li>
+          <li>
+            <a 
+              href="https://datasette.for-the-gg.org" 
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-400 hover:text-white transition-colors"
+            >
+              Explore Data
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Resources</h3>
+        <ul class="space-y-2">
+          <li>
+            <a 
+              href="https://github.com/For-The-Greater-Good" 
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-400 hover:text-white transition-colors"
+            >
+              GitHub Organization
+            </a>
+          </li>
+          <li>
+            <a 
+              href="https://openreferral.org/about/hsds/" 
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-400 hover:text-white transition-colors"
+            >
+              HSDS Standard
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-8 pt-8 border-t border-gray-800">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 text-sm">
+          © {currentYear} For The Greater Good - Data: Public Domain | Code: Non-Commercial
+        </p>
+        <p class="text-gray-400 text-sm mt-2 md:mt-0">
+          Built with AI for humanity
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

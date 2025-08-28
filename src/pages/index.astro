@@ -1,0 +1,630 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VintageBadge from '../components/vintage/VintageBadge.astro';
+import PrintBlock from '../components/vintage/PrintBlock.astro';
+import RadioWave from '../components/vintage/RadioWave.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+---
+
+<BaseLayout title="Home">
+  <!-- Hero Section with Vintage Badge -->
+  <section class="vintage-hero">
+    <div class="vintage-container">
+      <div class="hero-badge-container">
+        <VintageBadge 
+          size="xl" 
+          color="gold" 
+          animate={true}
+          icon="/images/ftgg-logo.png"
+          iconAlt="For The Greater Good"
+        >
+          <h1 class="hero-title">FOR THE<br/>GREATER GOOD</h1>
+          <div class="hero-frequency">88.5 FM</div>
+          <p class="hero-tagline">Broadcasting Food Security Since 2024</p>
+        </VintageBadge>
+      </div>
+      
+      <div class="hero-mission print-block">
+        <h2 class="mission-title">UNIFYING PUBLIC RESOURCES</h2>
+        <div class="mission-divider">⚓ ⚓ ⚓</div>
+        <p class="mission-text">
+          We're resource aggregation specialists with a simple mission: making existing public 
+          information truly accessible. We connect scattered resources through a single, 
+          intuitive interface, because finding help shouldn't require searching dozens of 
+          disconnected systems.
+        </p>
+        <p class="mission-quote">
+          "Public data be meant for all hands on deck, not just those who know the secret maps!"
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section with Print Blocks -->
+  <section class="stats-section">
+    <div class="vintage-container">
+      <h2 class="section-title">TRANSMISSION STRENGTH</h2>
+      
+      <div class="vintage-grid vintage-grid-3">
+        <PrintBlock 
+          title="LOCATIONS" 
+          number="27,849+" 
+          label="Food Assistance Sites"
+          color="rust"
+          stamp={true}
+        />
+        
+        <PrintBlock 
+          title="SCRAPERS" 
+          number="29" 
+          label="Active Data Sources"
+          color="teal"
+          stamp={true}
+        />
+        
+        <PrintBlock 
+          title="COVERAGE" 
+          number="15+" 
+          label="States Broadcasting"
+          color="gold"
+          stamp={true}
+        />
+      </div>
+      
+      <div class="stats-details print-block">
+        <h3>DATA SOURCES BREAKDOWN</h3>
+        <div class="source-grid">
+          <div class="source-item">
+            <span class="source-count">22</span>
+            <span class="source-label">Regional Food Banks</span>
+          </div>
+          <div class="source-item">
+            <span class="source-count">4</span>
+            <span class="source-label">Technology Platforms</span>
+          </div>
+          <div class="source-item">
+            <span class="source-count">2</span>
+            <span class="source-label">Community Resources</span>
+          </div>
+          <div class="source-item">
+            <span class="source-count">1</span>
+            <span class="source-label">National API</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section styled as Treasure Map -->
+  <section class="map-section">
+    <div class="vintage-container">
+      <div class="treasure-map-header">
+        <h2 class="map-title">THE TREASURE MAP</h2>
+        <p class="map-subtitle">X marks the spots where hungry folks can find food</p>
+      </div>
+      
+      <div class="treasure-map-container">
+        <div class="map-decoration top-left">📍</div>
+        <div class="map-decoration top-right">🧭</div>
+        <div class="map-decoration bottom-left">⚓</div>
+        <div class="map-decoration bottom-right">🏴‍☠️</div>
+        
+        <MapEmbed />
+      </div>
+    </div>
+  </section>
+
+  <!-- Data Exploration -->
+  <section class="data-section">
+    <div class="vintage-container">
+      <div class="data-header">
+        <h2 class="section-title">EXPLORE THE DATA</h2>
+        <p class="data-subtitle">Dive deep into 37,000+ food assistance locations</p>
+      </div>
+      
+      <div class="data-explorer print-block">
+        <h3>DATASETTE EXPLORER</h3>
+        <p>
+          Query our entire database using SQL right in your browser. Filter by state, 
+          search by service type, export to CSV - all the data at your fingertips.
+        </p>
+        <div class="data-features">
+          <span class="data-feature">📊 Interactive SQL queries</span>
+          <span class="data-feature">📍 37,000+ locations</span>
+          <span class="data-feature">📥 Export to CSV/JSON</span>
+          <span class="data-feature">🔍 Full text search</span>
+        </div>
+        <div class="data-cta">
+          <a 
+            href="https://datasette.for-the-gg.org" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-vintage btn-large"
+          >
+            EXPLORE THE DATABASE
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology Stack -->
+  <section class="tech-section">
+    <div class="vintage-container">
+      <h2 class="section-title">OUR FLEET</h2>
+      
+      <div class="vintage-grid vintage-grid-2">
+        <div class="fleet-ship">
+          <VintageBadge 
+            size="lg" 
+            color="rust"
+            icon="/images/ppr-logo.png"
+            iconAlt="Pantry Pirate Radio"
+          >
+            <h3>PANTRY PIRATE RADIO</h3>
+            <p class="ship-desc">The Flagship</p>
+          </VintageBadge>
+          <div class="ship-details">
+            <p>Our main data aggregation system that captures and standardizes food assistance 
+            information from multiple sources into HSDS-compliant format.</p>
+            <div class="tech-tags">
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">Redis</span>
+              <span class="tech-tag">Docker</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="fleet-ship">
+          <VintageBadge 
+            size="lg" 
+            color="teal"
+            icon="/images/buoy-logo.png"
+            iconAlt="HAARRRvest"
+          >
+            <h3>HAARRRVEST</h3>
+            <p class="ship-desc">The Explorer</p>
+          </VintageBadge>
+          <div class="ship-details">
+            <p>Interactive data explorer and visualization platform that makes our collected 
+            food security data accessible through maps and queryable interfaces.</p>
+            <div class="tech-tags">
+              <span class="tech-tag">SQLite</span>
+              <span class="tech-tag">Datasette</span>
+              <span class="tech-tag">GitHub Pages</span>
+              <span class="tech-tag">Leaflet</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta-section">
+    <div class="vintage-container">
+      <div class="cta-badge">
+        <VintageBadge size="lg" color="gold" animate={true}>
+          <h2>JOIN THE CREW</h2>
+          <p class="cta-text">
+            We're not professional programmers - we're hobbyists using AI to solve real problems.
+            If you can describe the problem, we can solve it together.
+          </p>
+          <div class="cta-buttons">
+            <a href="/about" class="btn-vintage">Learn More</a>
+            <a href="https://github.com/For-The-Greater-Good" class="btn-vintage" target="_blank" rel="noopener noreferrer">
+              View Code
+            </a>
+          </div>
+        </VintageBadge>
+      </div>
+      
+      <div class="principles-grid">
+        <PrintBlock color="rust" rotate={true}>
+          <h4>NO PERSONAL DATA</h4>
+          <p>We never collect or store personal information</p>
+        </PrintBlock>
+        
+        <PrintBlock color="teal" rotate={true}>
+          <h4>OPEN DATA</h4>
+          <p>All data outputs free to use, code non-commercial</p>
+        </PrintBlock>
+        
+        <PrintBlock color="gold" rotate={true}>
+          <h4>AI TRANSPARENCY</h4>
+          <p>Most code is AI-generated and we're proud of it</p>
+        </PrintBlock>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .vintage-hero {
+    padding: var(--space-2xl) 0;
+    position: relative;
+  }
+  
+  .hero-badge-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-2xl);
+  }
+  
+  .hero-title {
+    font-size: var(--font-scale-2xl);
+    text-align: center;
+    line-height: 0.9;
+    margin-bottom: var(--space-sm);
+    color: var(--ink-black);
+    text-shadow: 3px 3px 0 var(--rust-orange);
+  }
+  
+  .hero-frequency {
+    font-size: var(--font-scale-xl);
+    color: var(--rust-orange);
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    font-weight: 900;
+    margin: var(--space-sm) 0;
+  }
+  
+  .hero-tagline {
+    font-size: var(--font-scale-base);
+    text-align: center;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+  
+  .hero-mission {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    transform: rotate(-0.5deg);
+  }
+  
+  .mission-title {
+    font-size: var(--font-scale-xl);
+    margin-bottom: var(--space-md);
+    color: var(--rust-orange);
+  }
+  
+  .mission-divider {
+    font-size: var(--font-scale-lg);
+    margin: var(--space-md) 0;
+    color: var(--ocean-teal);
+  }
+  
+  .mission-text {
+    font-size: var(--font-scale-base);
+    line-height: 1.4;
+    margin-bottom: var(--space-md);
+  }
+  
+  .mission-quote {
+    font-style: italic;
+    font-size: var(--font-scale-base);
+    color: var(--ink-soft);
+    padding: var(--space-md);
+    border-left: 4px solid var(--rust-orange);
+    background: rgba(214, 48, 49, 0.05);
+    text-align: left;
+  }
+  
+  /* Stats Section */
+  .stats-section {
+    padding: var(--space-2xl) 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(240, 220, 192, 0.3) 100%);
+  }
+  
+  .section-title {
+    font-size: var(--font-scale-2xl);
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+    color: var(--ink-black);
+    text-shadow: 3px 3px 0 var(--mustard-gold);
+    letter-spacing: -0.03em;
+  }
+  
+  .stats-details {
+    margin-top: var(--space-2xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .stats-details h3 {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    color: var(--ocean-teal);
+  }
+  
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+  
+  .source-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+  
+  .source-count {
+    font-size: var(--font-scale-xl);
+    font-weight: 900;
+    color: var(--rust-orange);
+    text-shadow: 2px 2px 0 var(--ink-black);
+  }
+  
+  .source-label {
+    font-size: var(--font-scale-sm);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+  
+  /* Map Section */
+  .map-section {
+    padding: var(--space-2xl) 0;
+    background: var(--paper-light);
+  }
+  
+  .treasure-map-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+  
+  .map-title {
+    font-size: var(--font-scale-2xl);
+    color: var(--ink-black);
+    text-shadow: 3px 3px 0 var(--ocean-teal);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .map-subtitle {
+    font-size: var(--font-scale-base);
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+  
+  .treasure-map-container {
+    position: relative;
+    padding: var(--space-lg);
+    background: var(--vintage-cream);
+    border: var(--border-thick);
+    box-shadow: var(--shadow-print);
+    transform: rotate(-0.2deg);
+  }
+  
+  .treasure-map-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 40px,
+        rgba(0, 0, 0, 0.02) 40px,
+        rgba(0, 0, 0, 0.02) 41px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 40px,
+        rgba(0, 0, 0, 0.02) 40px,
+        rgba(0, 0, 0, 0.02) 41px
+      );
+    pointer-events: none;
+  }
+  
+  .map-decoration {
+    position: absolute;
+    font-size: 2rem;
+    z-index: 10;
+  }
+  
+  .map-decoration.top-left { top: var(--space-sm); left: var(--space-sm); }
+  .map-decoration.top-right { top: var(--space-sm); right: var(--space-sm); }
+  .map-decoration.bottom-left { bottom: var(--space-sm); left: var(--space-sm); }
+  .map-decoration.bottom-right { bottom: var(--space-sm); right: var(--space-sm); }
+  
+  /* Tech Section */
+  .tech-section {
+    padding: var(--space-2xl) 0;
+  }
+  
+  .fleet-ship {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+  
+  .fleet-ship h3 {
+    font-size: var(--font-scale-lg);
+    margin-bottom: var(--space-xs);
+  }
+  
+  .ship-desc {
+    font-size: var(--font-scale-sm);
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+  
+  .ship-details {
+    text-align: center;
+    max-width: 400px;
+  }
+  
+  .ship-details p {
+    margin-bottom: var(--space-md);
+    line-height: 1.4;
+  }
+  
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    justify-content: center;
+  }
+  
+  .tech-tag {
+    background: var(--mustard-gold);
+    color: var(--ink-black);
+    padding: var(--space-xs) var(--space-sm);
+    font-size: var(--font-scale-xs);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    border: 2px solid var(--ink-black);
+    box-shadow: 2px 2px 0 var(--ink-black);
+  }
+  
+  /* Data Section */
+  .data-section {
+    padding: var(--space-2xl) 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(240, 220, 192, 0.2) 100%);
+  }
+  
+  .data-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+  
+  .data-subtitle {
+    font-size: var(--font-scale-lg);
+    color: var(--ocean-teal);
+    margin-top: var(--space-sm);
+  }
+  
+  .data-explorer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    text-align: center;
+    transform: rotate(-0.2deg);
+  }
+  
+  .data-explorer h3 {
+    font-size: var(--font-scale-xl);
+    color: var(--rust-orange);
+    margin-bottom: var(--space-md);
+    text-shadow: 2px 2px 0 var(--ink-black);
+  }
+  
+  .data-explorer p {
+    font-size: var(--font-scale-base);
+    line-height: 1.5;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .data-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+  }
+  
+  .data-feature {
+    display: block;
+    padding: var(--space-sm);
+    background: var(--mustard-gold);
+    color: var(--ink-black);
+    font-size: var(--font-scale-sm);
+    font-weight: 700;
+    border: 2px solid var(--ink-black);
+    box-shadow: 2px 2px 0 var(--ink-black);
+  }
+  
+  .data-cta {
+    margin-top: var(--space-xl);
+  }
+  
+  .btn-large {
+    padding: var(--space-md) var(--space-xl);
+    font-size: var(--font-scale-lg);
+  }
+  
+  /* CTA Section */
+  .cta-section {
+    padding: var(--space-2xl) 0;
+    background: linear-gradient(180deg, rgba(240, 220, 192, 0.3) 0%, transparent 100%);
+  }
+  
+  .cta-badge {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-2xl);
+  }
+  
+  .cta-badge h2 {
+    font-size: var(--font-scale-xl);
+    margin-bottom: var(--space-md);
+  }
+  
+  .cta-text {
+    font-size: var(--font-scale-base);
+    margin-bottom: var(--space-lg);
+    max-width: 300px;
+    line-height: 1.4;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+  }
+  
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-xl);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .principles-grid h4 {
+    font-size: var(--font-scale-base);
+    margin-bottom: var(--space-sm);
+    color: var(--ink-black);
+    text-shadow: 1px 1px 0 var(--rust-orange);
+  }
+  
+  .principles-grid p {
+    font-size: var(--font-scale-sm);
+    line-height: 1.3;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: var(--font-scale-xl);
+    }
+    
+    .source-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .fleet-ship {
+      margin-bottom: var(--space-xl);
+    }
+    
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .btn-vintage {
+      width: 200px;
+      text-align: center;
+    }
+  }
+</style>

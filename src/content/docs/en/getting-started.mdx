@@ -1,0 +1,158 @@
+---
+title: Getting Started
+description: Set up and run Pantry Pirate Radio to aggregate food security data in your area
+---
+
+import { Card, CardGrid, Steps, Aside } from '@astrojs/starlight/components';
+
+# Getting Started with Pantry Pirate Radio
+
+**Breaking down barriers to food security through unified resource access**
+
+Pantry Pirate Radio is a distributed food security data aggregation system implementing the **OpenReferral Human Services Data Specification (HSDS) v3.1.1**. The system unifies scattered food resource data through AI-powered normalization, intelligent deduplication, and geographic optimization to provide comprehensive, HSDS-compliant food security information.
+
+## Quick Stats
+
+<CardGrid>
+  <Card title="Coverage" icon="globe">
+    **29 scrapers** across **15+ states**
+    tracking **27,849+ locations**
+  </Card>
+  <Card title="Data Quality" icon="check">
+    **90% test coverage** with
+    strict validation and type safety
+  </Card>
+  <Card title="HSDS Compliant" icon="document">
+    Full **HSDS v3.1.1** compliance
+    with AI-powered normalization
+  </Card>
+  <Card title="Geographic Intelligence" icon="map">
+    Continental US coverage with
+    PostGIS spatial optimization
+  </Card>
+</CardGrid>
+
+## Prerequisites
+
+Before you begin, ensure you have:
+
+- **Docker** and **Docker Compose** installed
+- **Git** for cloning the repository
+- **Python 3.11+** (for local development)
+- An **LLM API key** (OpenAI or Claude)
+
+## Installation
+
+<Steps>
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/For-The-Greater-Good/pantry-pirate-radio.git
+   cd pantry-pirate-radio
+   ```
+
+2. **Set up environment variables**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your configuration
+   ```
+
+3. **Choose your setup method**
+
+   ### Option A: Using Bouy (Recommended)
+   ```bash
+   ./bouy up --init
+   ```
+   
+   ### Option B: Using Docker Compose
+   ```bash
+   docker compose up -d
+   ```
+
+   ### Option C: Local Development
+   ```bash
+   poetry install
+   poetry run alembic upgrade head
+   poetry run uvicorn app.main:app --reload
+   ```
+
+4. **Verify installation**
+   ```bash
+   curl http://localhost:8000/health
+   # Should return: {"status": "healthy"}
+   ```
+
+</Steps>
+
+## Core Features
+
+### Data Aggregation
+- Full HSDS v3.1.1 compliance with comprehensive validation
+- Real-time and scheduled aggregation of food security resources
+- AI-powered data normalization with confidence scoring
+- Intelligent deduplication across multiple sources
+- Geographic coverage optimization
+- Rich metadata and provenance tracking
+
+### Geographic Intelligence
+- Continental US coverage (25°N to 49°N, -125°W to -67°W)
+- Smart grid generation for large area searches
+- PostGIS-optimized spatial queries
+- Unified Geocoding Service with multi-provider fallback
+- Automatic detection and correction of invalid coordinates
+- State boundary verification and validation
+
+### AI Integration
+- Support for OpenAI and Claude providers
+- AI-powered HSDS schema alignment
+- Confidence scoring with validation feedback loops
+- Automatic retry with quota management
+- Native structured output support
+
+### Data Quality
+- Confidence scoring (0-100 scale) for all location data
+- Automated data enrichment and validation
+- Redis-based distributed validation service
+- Configurable quality thresholds
+- Field coherence validation
+
+## Service Architecture
+
+```
+Web Sources → Scrapers → Content Store → Redis Queue → LLM Workers
+                ↓                                           ↓
+            Dedup Check                                HSDS Alignment
+                                                           ↓
+PostgreSQL ← Reconciler ← Job Creation ← Confidence Validation
+    ↓                          ↓
+FastAPI → Clients         JSON Archives → HAARRRvest Repository
+```
+
+## Next Steps
+
+<CardGrid>
+  <Card title="Run Your First Scraper" icon="rocket">
+    Learn how to run scrapers and collect food resource data.
+    [View Scrapers Guide →](/scrapers/overview)
+  </Card>
+  <Card title="Explore the API" icon="puzzle">
+    Discover the HSDS-compliant REST API endpoints.
+    [API Documentation →](/api/overview)
+  </Card>
+  <Card title="Configure Providers" icon="setting">
+    Set up LLM providers and geocoding services.
+    [Configuration Guide →](/reference/configuration)
+  </Card>
+  <Card title="Contribute" icon="github">
+    Join the community and help improve food security access.
+    [Contributing Guide →](/guides/contributing)
+  </Card>
+</CardGrid>
+
+## Mission
+
+Our mission is to break down information barriers in food security by making public resources truly accessible through intelligent aggregation and standardization.
+
+<Aside type="tip">
+  **For The Greater Good**: This project is released to the public domain. No rights reserved.
+</Aside>

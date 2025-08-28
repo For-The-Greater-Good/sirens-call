@@ -1,0 +1,193 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+---
+
+<footer class="vintage-docs-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3 class="footer-title">Technical Manual</h3>
+      <p class="footer-text">
+        For The Greater Good<br/>
+        Pantry Pirate Radio Documentation<br/>
+        Version 2024.11
+      </p>
+    </div>
+    
+    <div class="footer-section">
+      <h3 class="footer-title">Frequency</h3>
+      <div class="frequency-badge">
+        <span class="freq">103.5 FM</span>
+        <span class="callsign">FTGG-DOCS</span>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h3 class="footer-title">Resources</h3>
+      <div class="footer-links">
+        <a href="https://github.com/For-The-Greater-Good/pantry-pirate-radio" class="footer-link">
+          GitHub Repository
+        </a>
+        <a href="/api/overview" class="footer-link">
+          API Reference
+        </a>
+        <a href="/guides/contributing" class="footer-link">
+          Contributing
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <div class="static-bar"></div>
+    <p class="copyright">
+      Released to the Public Domain • No Rights Reserved
+    </p>
+    <div class="static-bar"></div>
+  </div>
+</footer>
+
+<style>
+  .vintage-docs-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 4px double var(--rust);
+    background: linear-gradient(180deg, transparent 0%, var(--rust-100) 100%);
+  }
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+  }
+  
+  .footer-section {
+    text-align: center;
+  }
+  
+  .footer-title {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--rust);
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  
+  .footer-title::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 2px;
+    background: var(--gold);
+  }
+  
+  .footer-text {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  
+  .frequency-badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background: var(--rust);
+    color: var(--background);
+    border: 2px solid var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+  
+  .freq {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--gold);
+  }
+  
+  .callsign {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+  }
+  
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  
+  .footer-link {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--teal);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  
+  .footer-link:hover {
+    color: var(--gold);
+  }
+  
+  .footer-link::before {
+    content: '▸ ';
+    color: var(--gold);
+  }
+  
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    background: var(--rust-200);
+  }
+  
+  .static-bar {
+    flex: 1;
+    height: 2px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--ink) 0px,
+      var(--ink) 5px,
+      transparent 5px,
+      transparent 10px
+    );
+    max-width: 200px;
+  }
+  
+  .copyright {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--ink);
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .footer-bottom {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .static-bar {
+      width: 100%;
+    }
+  }
+</style>

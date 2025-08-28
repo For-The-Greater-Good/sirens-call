@@ -1,0 +1,248 @@
+{
+  "site": {
+    "title": "FTGG Radio",
+    "tagline": "Broadcasting Food Security Since 2024",
+    "description": "For The Greater Good - Broadcasting Food Security Since 2024"
+  },
+  "nav": {
+    "home": "HOME",
+    "about": "ABOUT",
+    "technology": "TECH",
+    "docs": "DOCS",
+    "github": "GITHUB",
+    "frequencies": {
+      "home": "19.3 FM",
+      "about": "17.8 FM",
+      "technology": "96.9 FM",
+      "docs": "84.0 FM",
+      "github": "20.8 FM"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "FOR THE\nGREATER GOOD",
+      "frequency": "88.5 FM",
+      "tagline": "Broadcasting Food Security Since 2024"
+    },
+    "mission": {
+      "title": "UNIFYING PUBLIC RESOURCES",
+      "text": "We're resource aggregation specialists with a simple mission: making existing public information truly accessible. We connect scattered resources through a single, intuitive interface, because finding help shouldn't require searching dozens of disconnected systems.",
+      "quote": "Public data be meant for all hands on deck, not just those who know the secret maps!"
+    },
+    "stats": {
+      "title": "TRANSMISSION STRENGTH",
+      "locations": {
+        "number": "27,849+",
+        "label": "Food Assistance Sites"
+      },
+      "scrapers": {
+        "number": "29",
+        "label": "Active Data Sources"
+      },
+      "coverage": {
+        "number": "15+",
+        "label": "States Broadcasting"
+      }
+    },
+    "map": {
+      "title": "THE TREASURE MAP",
+      "subtitle": "X marks the spots where hungry folks can find food"
+    },
+    "fleet": {
+      "title": "OUR FLEET",
+      "ppr": {
+        "name": "PANTRY PIRATE RADIO",
+        "role": "The Flagship",
+        "description": "Our main data aggregation system that captures and standardizes food assistance information from multiple sources into HSDS-compliant format."
+      },
+      "haarrrvest": {
+        "name": "HAARRRVEST",
+        "role": "The Explorer",
+        "description": "Interactive data explorer and visualization platform that makes our collected food security data accessible through maps and queryable interfaces."
+      }
+    },
+    "cta": {
+      "title": "JOIN THE CREW",
+      "text": "We're not professional programmers - we're hobbyists using AI to solve real problems. If you can describe the problem, we can solve it together.",
+      "learnMore": "Learn More",
+      "viewCode": "View Code"
+    },
+    "principles": {
+      "noPersonalData": {
+        "title": "NO PERSONAL DATA",
+        "text": "We never collect or store personal information"
+      },
+      "publicDomain": {
+        "title": "PUBLIC DOMAIN",
+        "text": "All our work is released with no restrictions"
+      },
+      "aiTransparency": {
+        "title": "AI TRANSPARENCY",
+        "text": "Most code is AI-generated and we're proud of it"
+      }
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "THE CREW",
+      "frequency": "92.3 FM",
+      "tagline": "Broadcasting Truth Since 2024"
+    },
+    "manifesto": {
+      "title": "DIGITAL PIRATES ON THE AIRWAVES",
+      "text": "We sail the seven servers, liberating food security data trapped behind corporate firewalls. Like the pirate radio operators of old, we broadcast vital information without permission, without restriction, and without apology."
+    },
+    "mission": {
+      "title": "MISSION BROADCAST",
+      "signal": "SIGNAL: STRONG",
+      "transmitting": "TRANSMITTING ON ALL FREQUENCIES",
+      "message": {
+        "title": "THE MESSAGE",
+        "text1": "Information about where hungry people can find food should NEVER be proprietary. We bypass Terms of Service restrictions and technical barriers to aggregate data, standardize it to HSDS spec, and release it into the public domain.",
+        "text2": "Every day, vital information sits scattered across hundreds of websites in formats that are difficult to access. We're changing that, one scraper at a time.",
+        "footer": "ALL CODE • ALL DATA • ALL FREE • FOREVER"
+      }
+    },
+    "values": {
+      "title": "OPERATING PRINCIPLES",
+      "openness": {
+        "title": "RADICAL OPENNESS",
+        "text": "Everything we create belongs to everyone. No copyrights, no patents, no restrictions. Pure public domain dedication."
+      },
+      "action": {
+        "title": "DIRECT ACTION",
+        "text": "We don't wait for permission or corporate partnerships. If data about food assistance exists, we'll find it and free it."
+      },
+      "ai": {
+        "title": "AI-POWERED",
+        "text": "We leverage cutting-edge AI to rapidly develop scrapers, process data, and maintain infrastructure at minimal cost."
+      }
+    },
+    "story": {
+      "title": "THE FTGG CHRONICLE",
+      "established": "ESTABLISHED 2024",
+      "chapter1": {
+        "title": "CHAPTER ONE: THE OBSERVATION",
+        "text": "It began with a simple observation: while corporations spend millions on data analytics and market research, the people who need food assistance often can't find basic information about where to get help."
+      },
+      "chapter2": {
+        "title": "CHAPTER TWO: THE BUILD",
+        "text": "We started by scraping a single food bank website. Then another. And another. Soon we realized the scale of the problem - and the opportunity."
+      },
+      "chapter3": {
+        "title": "CHAPTER THREE: THE NETWORK",
+        "text": "Today, our network processes data from 29 scrapers covering 15+ states, maintaining an up-to-date repository of 27,849+ food assistance locations."
+      }
+    },
+    "crew": {
+      "title": "THE ANONYMOUS COLLECTIVE",
+      "who": "WHO WE ARE",
+      "text1": "We are hobbyists, not professionals. We're developers, data scientists, and activists united by a common belief: information about food assistance should be free and accessible to all.",
+      "text2": "Most of our code is AI-generated, and we're proud of it. We use technology as a force multiplier to achieve what would take traditional teams months in just days.",
+      "motto": "Our contributors prefer to remain anonymous, letting the work speak for itself. What matters is not who we are, but what we're building together."
+    },
+    "impact": {
+      "title": "SIGNAL STRENGTH REPORT",
+      "locations": "Locations Mapped",
+      "scrapers": "Active Scrapers",
+      "states": "States Covered",
+      "publicDomain": "Public Domain",
+      "message": "Every location we map, every API endpoint we provide, and every line of code we write contributes to a world where finding food assistance is as easy as turning on a radio."
+    },
+    "cta": {
+      "title": "JOIN THE BROADCAST",
+      "text": "Whether you can code, write, design, or just spread the word - there's a frequency for you in our mission.",
+      "github": "GITHUB STATION",
+      "techSpecs": "TECH SPECS"
+    }
+  },
+  "technology": {
+    "hero": {
+      "title": "TECH SPECS",
+      "frequency": "96.7 FM",
+      "tagline": "Broadcasting Infrastructure"
+    },
+    "manifesto": {
+      "title": "PIRATE RADIO ENGINEERING",
+      "text": "Modern infrastructure for food security data liberation. Built with open source tools, deployed in containers, and designed for complete independence from corporate infrastructure."
+    },
+    "architecture": {
+      "title": "SIGNAL FLOW DIAGRAM",
+      "note": "Every component can be self-hosted, modified, or replaced. No corporate dependencies. Pure independence for the data liberation mission."
+    },
+    "components": {
+      "title": "BROADCASTING EQUIPMENT",
+      "ppr": {
+        "name": "PANTRY PIRATE RADIO",
+        "subtitle": "THE FLAGSHIP TRANSMITTER",
+        "description": "Main data aggregation and API system powering the entire operation.",
+        "coreTech": "CORE TECH",
+        "keyFeatures": "KEY FEATURES"
+      },
+      "scrapers": {
+        "name": "DATA SCRAPERS",
+        "subtitle": "THE ANTENNA ARRAY",
+        "description": "29 active scrapers capturing food assistance data from multiple sources.",
+        "scraperTech": "SCRAPER TECH",
+        "dataSources": "DATA SOURCES"
+      },
+      "ai": {
+        "name": "AI PROCESSOR",
+        "subtitle": "THE SIGNAL DECODER",
+        "description": "LLMs align scraped data to HSDS schema with high accuracy.",
+        "providers": "LLM PROVIDERS",
+        "pipeline": "PIPELINE"
+      },
+      "haarrrvest": {
+        "name": "HAARRRVEST",
+        "subtitle": "THE BROADCAST TOWER",
+        "description": "Public data repository with interactive exploration tools.",
+        "storage": "STORAGE",
+        "visuals": "VISUALS"
+      }
+    },
+    "practices": {
+      "title": "ENGINEERING STANDARDS",
+      "testDriven": {
+        "title": "TEST-DRIVEN",
+        "text": "90%+ test coverage requirement. Every feature built with comprehensive tests following red-green-refactor."
+      },
+      "typeSafety": {
+        "title": "TYPE SAFETY",
+        "text": "Full mypy strict mode. TypeScript for frontend. Catch errors at development time, not runtime."
+      },
+      "aiPowered": {
+        "title": "AI-POWERED",
+        "text": "Leveraging Claude and GPT-4 for rapid prototyping. AI writes code, humans ensure quality."
+      }
+    },
+    "infrastructure": {
+      "title": "DOCKER ARMADA",
+      "subtitle": "CONTAINERIZED FLEET",
+      "description": "Everything runs in containers, ensuring consistency across development, testing, and production.",
+      "services": "SERVICES",
+      "commands": "COMMANDS"
+    },
+    "api": {
+      "title": "TRANSMISSION PROTOCOLS",
+      "hsds": "HSDS v3.1.1 COMPLIANCE",
+      "description": "Our API fully implements the Human Services Data Specification, ensuring compatibility with existing tools and systems in the social services ecosystem.",
+      "dataFormats": "DATA FORMATS",
+      "accessMethods": "ACCESS METHODS"
+    },
+    "cta": {
+      "title": "BUILD WITH US",
+      "text": "All our technology is open source and released into the public domain. Clone it, fork it, improve it - no permission needed.",
+      "sourceCode": "SOURCE CODE",
+      "readDocs": "READ DOCS"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 For The Greater Good. Released to the Public Domain.",
+    "links": {
+      "github": "GitHub",
+      "api": "API Docs",
+      "data": "Data Explorer"
+    }
+  }
+}

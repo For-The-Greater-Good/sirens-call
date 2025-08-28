@@ -1,0 +1,140 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/Search.astro';
+---
+
+<div class="vintage-search">
+  <div class="search-label">
+    <span class="search-icon">🔍</span>
+    <span class="search-text">SEARCH FREQUENCY</span>
+  </div>
+  <div class="search-wrapper">
+    <Default {...Astro.props} />
+  </div>
+</div>
+
+<style>
+  .vintage-search {
+    margin: 1rem 0;
+  }
+  
+  .search-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--rust);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  
+  .search-wrapper {
+    position: relative;
+  }
+  
+  :global(.vintage-search [data-pagefind-ui]) {
+    --pagefind-ui-scale: 1;
+    --pagefind-ui-primary: var(--gold);
+    --pagefind-ui-text: var(--ink);
+    --pagefind-ui-background: var(--background);
+    --pagefind-ui-border: var(--rust-200);
+    --pagefind-ui-tag: var(--rust-100);
+    --pagefind-ui-border-width: 2px;
+    --pagefind-ui-border-radius: 0;
+    --pagefind-ui-font: var(--font-mono);
+  }
+  
+  :global(.vintage-search input[type="search"]) {
+    background: var(--background) !important;
+    border: 2px solid var(--rust-200) !important;
+    border-radius: 0 !important;
+    padding: 0.75rem 1rem !important;
+    font-family: var(--font-mono) !important;
+    font-size: 0.875rem !important;
+    color: var(--ink) !important;
+    box-shadow: inset 2px 2px 0 var(--rust-100);
+    transition: all 0.2s ease;
+  }
+  
+  :global(.vintage-search input[type="search"]:focus) {
+    outline: none !important;
+    border-color: var(--gold) !important;
+    box-shadow: 
+      inset 2px 2px 0 var(--rust-100),
+      0 0 0 3px var(--rust-100) !important;
+  }
+  
+  :global(.vintage-search input[type="search"]::placeholder) {
+    color: var(--rust-300);
+    opacity: 1;
+  }
+  
+  /* Search button */
+  :global(.vintage-search button) {
+    background: var(--gold) !important;
+    border: 2px solid var(--ink) !important;
+    border-radius: 0 !important;
+    color: var(--ink) !important;
+    font-family: var(--font-mono) !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.5rem 1rem !important;
+    box-shadow: 2px 2px 0 var(--ink);
+    transition: all 0.2s ease;
+  }
+  
+  :global(.vintage-search button:hover) {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+  
+  /* Search results */
+  :global(.vintage-search .pagefind-ui__search-results) {
+    background: var(--background);
+    border: 2px solid var(--rust-200);
+    border-radius: 0;
+    margin-top: 1rem;
+    box-shadow: 3px 3px 0 var(--rust-100);
+  }
+  
+  :global(.vintage-search .pagefind-ui__result) {
+    border-bottom: 1px dashed var(--rust-200);
+    padding: 1rem;
+    transition: all 0.2s ease;
+  }
+  
+  :global(.vintage-search .pagefind-ui__result:hover) {
+    background: var(--rust-100);
+  }
+  
+  :global(.vintage-search .pagefind-ui__result-title) {
+    font-family: var(--font-display);
+    font-weight: bold;
+    color: var(--ink);
+  }
+  
+  :global(.vintage-search .pagefind-ui__result-link) {
+    color: var(--teal);
+    text-decoration: none;
+  }
+  
+  :global(.vintage-search .pagefind-ui__result-link:hover) {
+    color: var(--gold);
+  }
+  
+  :global(.vintage-search .pagefind-ui__result-excerpt) {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--rust);
+    margin-top: 0.5rem;
+  }
+  
+  :global(.vintage-search mark) {
+    background: var(--gold);
+    color: var(--ink);
+    padding: 0 0.25rem;
+  }
+</style>

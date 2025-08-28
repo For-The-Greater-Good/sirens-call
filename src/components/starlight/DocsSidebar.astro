@@ -1,0 +1,251 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/Sidebar.astro';
+
+// Use default sidebar with custom styling via CSS
+---
+
+<div class="vintage-sidebar-wrapper">
+  <div class="sidebar-header">
+    <div class="frequency-display">
+      <span class="freq-label">FREQ</span>
+      <span class="freq-value">103.5</span>
+      <span class="freq-unit">FM</span>
+    </div>
+    <div class="signal-indicator">
+      <span class="signal-bar"></span>
+      <span class="signal-bar"></span>
+      <span class="signal-bar"></span>
+      <span class="signal-bar active"></span>
+      <span class="signal-bar active"></span>
+    </div>
+  </div>
+  
+  <div class="sidebar-divider">
+    <span class="divider-text">NAVIGATION</span>
+  </div>
+  
+  <Default {...Astro.props} />
+  
+  <div class="sidebar-footer">
+    <div class="radio-static"></div>
+    <div class="footer-text">
+      TECHNICAL MANUAL<br/>
+      REV 2024.11
+    </div>
+  </div>
+</div>
+
+<style>
+  .vintage-sidebar-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--background);
+    border-right: 2px solid var(--rust-200);
+  }
+  
+  .sidebar-header {
+    padding: 1.5rem;
+    border-bottom: 2px solid var(--rust-200);
+    background: linear-gradient(135deg, var(--rust-100) 0%, transparent 100%);
+  }
+  
+  .frequency-display {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    margin-bottom: 1rem;
+  }
+  
+  .freq-label {
+    font-size: 0.75rem;
+    color: var(--rust);
+    letter-spacing: 0.1em;
+  }
+  
+  .freq-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--gold);
+  }
+  
+  .freq-unit {
+    font-size: 0.875rem;
+    color: var(--rust);
+  }
+  
+  .signal-indicator {
+    display: flex;
+    gap: 3px;
+    align-items: flex-end;
+  }
+  
+  .signal-bar {
+    width: 4px;
+    background: var(--rust-200);
+    transition: all 0.3s ease;
+  }
+  
+  .signal-bar:nth-child(1) { height: 8px; }
+  .signal-bar:nth-child(2) { height: 12px; }
+  .signal-bar:nth-child(3) { height: 16px; }
+  .signal-bar:nth-child(4) { height: 20px; }
+  .signal-bar:nth-child(5) { height: 24px; }
+  
+  .signal-bar.active {
+    background: var(--gold);
+    animation: signalPulse 1s ease-in-out infinite;
+  }
+  
+  @keyframes signalPulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+  
+  .sidebar-divider {
+    padding: 0.75rem 1.5rem;
+    background: var(--rust);
+    color: var(--background);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .divider-text {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .divider-text::before,
+  .divider-text::after {
+    content: '◆';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold);
+  }
+  
+  .divider-text::before {
+    left: -20px;
+  }
+  
+  .divider-text::after {
+    right: -20px;
+  }
+  
+  /* Override Starlight sidebar styles */
+  :global(.vintage-sidebar-wrapper nav) {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem 0;
+  }
+  
+  :global(.vintage-sidebar-wrapper nav ul) {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  :global(.vintage-sidebar-wrapper nav li) {
+    margin: 0;
+  }
+  
+  :global(.vintage-sidebar-wrapper nav a) {
+    display: block;
+    padding: 0.5rem 1.5rem;
+    color: var(--ink);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  
+  :global(.vintage-sidebar-wrapper nav a:hover) {
+    background: var(--rust-100);
+    color: var(--gold);
+  }
+  
+  :global(.vintage-sidebar-wrapper nav a[aria-current="page"]) {
+    background: var(--rust-200);
+    color: var(--gold);
+    font-weight: bold;
+  }
+  
+  :global(.vintage-sidebar-wrapper nav a[aria-current="page"]::before) {
+    content: '▶';
+    position: absolute;
+    left: 0.5rem;
+    color: var(--gold);
+  }
+  
+  /* Nested items */
+  :global(.vintage-sidebar-wrapper nav ul ul) {
+    border-left: 2px dashed var(--rust-200);
+    margin-left: 1rem;
+  }
+  
+  :global(.vintage-sidebar-wrapper nav ul ul a) {
+    font-size: 0.8125rem;
+    padding-left: 2rem;
+  }
+  
+  /* Section headers */
+  :global(.vintage-sidebar-wrapper nav > ul > li > details > summary),
+  :global(.vintage-sidebar-wrapper nav > ul > li > span) {
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-display);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--rust);
+    background: var(--rust-100);
+    border-top: 1px solid var(--rust-200);
+    border-bottom: 1px solid var(--rust-200);
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  :global(.vintage-sidebar-wrapper nav > ul > li > details > summary:hover) {
+    background: var(--rust-200);
+  }
+  
+  .sidebar-footer {
+    padding: 1.5rem;
+    border-top: 2px solid var(--rust-200);
+    background: var(--rust-100);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .radio-static {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        var(--rust-200) 2px,
+        var(--rust-200) 4px
+      );
+    opacity: 0.1;
+    pointer-events: none;
+  }
+  
+  .footer-text {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--rust);
+    text-align: center;
+    letter-spacing: 0.05em;
+    position: relative;
+  }
+</style>

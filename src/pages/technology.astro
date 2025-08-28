@@ -1,0 +1,787 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VintageBadge from '../components/vintage/VintageBadge.astro';
+import PrintBlock from '../components/vintage/PrintBlock.astro';
+---
+
+<BaseLayout title="Technology">
+  <!-- Hero Section with Tech Badge -->
+  <section class="tech-hero">
+    <div class="vintage-container">
+      <VintageBadge size="xl" color="rust" animate={true}>
+        <h1 class="hero-title">TECH SPECS</h1>
+        <div class="hero-frequency">96.7 FM</div>
+        <p class="hero-tagline">The Data Journey</p>
+      </VintageBadge>
+      
+      <div class="tech-manifesto print-block">
+        <h2 class="manifesto-title">HOW WE LIBERATE FOOD DATA</h2>
+        <div class="manifesto-divider">⚡ ⚡ ⚡</div>
+        <p class="manifesto-text">
+          Follow the journey of a food resource from scattered website to structured data. 
+          Every line of code in this pipeline, including these scrapers, written entirely by AI agents.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 1: Data Collection -->
+  <section class="story-chapter">
+    <div class="vintage-container">
+      <h2 class="section-title">CHAPTER 1: THE SCRAPERS</h2>
+      
+      <div class="story-block print-block">
+        <div class="story-content">
+          <h3>AI-Written Data Collectors</h3>
+          <p>
+            Our journey begins with 35+ scrapers, each one written entirely by AI agents using simple templates. 
+            These scrapers inherit from a common <code>ScraperJob</code> base class, sharing utilities that make 
+            implementation quick and consistent.
+          </p>
+          
+          <div class="tech-detail">
+            <h4>THE TEMPLATE SYSTEM</h4>
+            <ul>
+              <li>AI agents write scrapers from templates</li>
+              <li>Common utilities handle geocoding, grid generation</li>
+              <li>Covers continental US (25°N-49°N, -125°W to -67°W)</li>
+              <li>Sources: Food banks, community organizations, government programs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 2: Deduplication -->
+  <section class="story-chapter alt-bg">
+    <div class="vintage-container">
+      <h2 class="section-title">CHAPTER 2: THE CONTENT STORE</h2>
+      
+      <div class="story-block print-block">
+        <div class="story-content">
+          <h3>SHA-256 Deduplication</h3>
+          <p>
+            Before any content reaches our expensive LLM processors, it passes through the Content Store. 
+            Every piece of scraped data is hashed with SHA-256. If we've seen it before, we skip the LLM 
+            entirely - saving significant processing costs.
+          </p>
+          
+          <div class="tech-detail">
+            <h4>DEDUPLICATION MECHANICS</h4>
+            <div class="code-example">
+              <pre><code>{`content_hash = SHA256(scraped_content)
+if content_store.has(content_hash):
+  return cached_result
+else:
+  queue_for_llm_processing()`}</code></pre>
+            </div>
+            <ul>
+              <li>SQLite index with WAL mode for concurrent access</li>
+              <li>Stored in HAARRRvest repo for durability</li>
+              <li>Prevents duplicate LLM API calls</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 3: LLM Processing -->
+  <section class="story-chapter">
+    <div class="vintage-container">
+      <h2 class="section-title">CHAPTER 3: THE LLM QUEUE</h2>
+      
+      <div class="story-block print-block">
+        <div class="story-content">
+          <h3>Structured Output Magic</h3>
+          <p>
+            New content enters the Redis queue where LLM workers pick it up. Using structured output - 
+            a technique where we provide the LLM with a strict JSON schema - we ensure consistent, 
+            parseable responses that align perfectly with HSDS v3.1.1.
+          </p>
+          
+          <div class="tech-detail">
+            <h4>STRUCTURED OUTPUT EXPLAINED</h4>
+            <p class="explanation">
+              Instead of hoping the LLM returns valid JSON, we enforce it through the API:
+            </p>
+            <div class="code-example">
+              <pre><code>{`{
+  "type": "object",
+  "properties": {
+    "organizations": {"type": "array"},
+    "services": {"type": "array"},
+    "locations": {"type": "array"}
+  }
+}`}</code></pre>
+            </div>
+            <ul>
+              <li>184-line prompt template for HSDS alignment</li>
+              <li>Anti-hallucination rules built in</li>
+              <li>Claude CLI and OpenAI HTTP providers</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 4: Recording -->
+  <section class="story-chapter alt-bg">
+    <div class="vintage-container">
+      <h2 class="section-title">CHAPTER 4: THE RECORDER</h2>
+      
+      <div class="story-block print-block">
+        <div class="story-content">
+          <h3>JSON Archives for Time Travel</h3>
+          <p>
+            The Content Store updates with LLM results, while the Recorder saves everything to JSON files. 
+            These archives can be "replayed" later to rebuild the entire database - like a ship's log that 
+            can recreate the voyage.
+          </p>
+          
+          <div class="tech-detail">
+            <h4>REPLAY CAPABILITY</h4>
+            <ul>
+              <li>Daily directories: <code>outputs/daily/YYYY-MM-DD/</code></li>
+              <li>Complete job history preserved</li>
+              <li>Database reconstruction from JSON</li>
+              <li>Disaster recovery built-in</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 5: Validation -->
+  <section class="story-chapter">
+    <div class="vintage-container">
+      <h2 class="section-title">CHAPTER 5: THE VALIDATOR</h2>
+      
+      <div class="story-block print-block">
+        <div class="story-content">
+          <h3>Trust But Verify</h3>
+          <p>
+            LLM output flows to the Validator, which scrutinizes every field. Using ArcGIS, Nominatim, 
+            and US Census geocoding (with intelligent caching to reduce API calls), it ensures coordinates 
+            are real and addresses are valid.
+          </p>
+          
+          <div class="tech-detail">
+            <h4>VALIDATION PIPELINE</h4>
+            <div class="validation-flow">
+              <div class="flow-step">
+                <strong>Confidence Scoring (0-100)</strong>
+                <ul>
+                  <li>No coordinates = score 0</li>
+                  <li>Test data detected = score 5</li>
+                  <li>Placeholder address = -75 points</li>
+                  <li>Wrong state = -20 points</li>
+                </ul>
+              </div>
+              <div class="flow-step">
+                <strong>Geocoding Cascade</strong>
+                <code>ArcGIS → Nominatim → Census</code>
+                <p>With TTL cache to minimize API usage</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 6: Reconciliation -->
+  <section class="story-chapter alt-bg">
+    <div class="vintage-container">
+      <h2 class="section-title">CHAPTER 6: THE RECONCILER</h2>
+      
+      <div class="story-block print-block">
+        <div class="story-content">
+          <h3>Creating Truth from Chaos</h3>
+          <p>
+            Validated jobs arrive at the Reconciler, which stores them in PostgreSQL with PostGIS extensions. 
+            Using HSDS v3.1.1 with custom additions for version tracking and spatial queries, it creates 
+            canonical records from multiple sources.
+          </p>
+          
+          <div class="tech-detail">
+            <h4>HSDS + CUSTOM EXTENSIONS</h4>
+            <ul>
+              <li><strong>Standard HSDS v3.1.1:</strong> organizations, services, locations</li>
+              <li><strong>Custom Addition:</strong> Version tracking for all records</li>
+              <li><strong>PostGIS Extension:</strong> Spatial indexing and queries</li>
+              <li>Coordinate-based location deduplication</li>
+              <li>Source-specific + canonical records</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 7: API -->
+  <section class="story-chapter">
+    <div class="vintage-container">
+      <h2 class="section-title">CHAPTER 7: THE API</h2>
+      
+      <div class="story-block print-block">
+        <div class="story-content">
+          <h3>Serving the Liberation</h3>
+          <p>
+            The FastAPI application reads from the PostGIS database, serving HSDS-compliant endpoints. 
+            Read-only access ensures data integrity while providing powerful geographic queries.
+          </p>
+          
+          <div class="api-endpoints">
+            <code>Find food banks near any location</code>
+            <code>Search by service type or hours</code>
+            <code>Get real-time availability</code>
+            <code>37,000+ locations accessible instantly</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 8: Publishing -->
+  <section class="story-chapter alt-bg">
+    <div class="vintage-container">
+      <h2 class="section-title">CHAPTER 8: THE BROADCAST</h2>
+      
+      <div class="story-block print-block">
+        <div class="story-content">
+          <h3>HAARRRvest Publisher</h3>
+          <p>
+            Our final stop: the HAARRRvest Publisher pulls data from the database and generates two 
+            critical outputs - an interactive Leaflet map showing all food locations, and a SQLite 
+            database for Datasette exploration.
+          </p>
+          
+          <div class="tech-detail">
+            <h4>PUBLIC OUTPUTS</h4>
+            <div class="output-grid">
+              <div class="output-item">
+                <strong>Leaflet Map</strong>
+                <ul>
+                  <li>Interactive location markers</li>
+                  <li>Service information popups</li>
+                  <li>GeoJSON data format</li>
+                </ul>
+              </div>
+              <div class="output-item">
+                <strong>Datasette SQLite</strong>
+                <ul>
+                  <li>Browser-based SQL queries</li>
+                  <li>CSV/JSON exports</li>
+                  <li>Public data exploration</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Docker Fleet -->
+  <section class="infrastructure-section">
+    <div class="vintage-container">
+      <h2 class="section-title">THE FLEET</h2>
+      
+      <div class="docker-ship print-block">
+        <div class="ship-header">
+          <img 
+            src="/images/buoy-docker-logo.png" 
+            alt="Buoy Docker Logo" 
+            class="docker-logo"
+          />
+          <h3>CONTAINERIZED ARMADA</h3>
+        </div>
+        
+        <p class="ship-description">
+          Every component sails in its own container, orchestrated by Docker Compose and managed by Buoy.
+        </p>
+        
+        <div class="docker-services">
+          <div class="service-list">
+            <h4>THE CREW</h4>
+            <ul>
+              <li><code>app</code> - FastAPI HSDS API</li>
+              <li><code>worker</code> - LLM processors</li>
+              <li><code>reconciler</code> - Deduplication</li>
+              <li><code>recorder</code> - JSON archiver</li>
+              <li><code>validator</code> - Data verification</li>
+              <li><code>haarrrvest-publisher</code> - Map generator</li>
+              <li><code>db</code> - PostgreSQL + PostGIS</li>
+              <li><code>cache</code> - Redis queues</li>
+            </ul>
+          </div>
+          <div class="command-list">
+            <h4>COMMANDS</h4>
+            <ul>
+              <li><code>./bouy up --with-init</code></li>
+              <li><code>./bouy test</code></li>
+              <li><code>./bouy scraper --all</code></li>
+              <li><code>./bouy replay</code></li>
+              <li><code>./bouy claude-auth</code></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quality Standards -->
+  <section class="practices-section">
+    <div class="vintage-container">
+      <h2 class="section-title">ENGINEERING STANDARDS</h2>
+      
+      <div class="vintage-grid vintage-grid-3">
+        <div class="practice-card">
+          <VintageBadge size="sm" color="rust">
+            <span class="practice-icon">🧪</span>
+          </VintageBadge>
+          <PrintBlock rotate={true}>
+            <h3>TEST COVERAGE</h3>
+            <p>
+              ~80% coverage with ratcheting. pytest, mypy strict,
+              black formatting, ruff linting, bandit security.
+            </p>
+          </PrintBlock>
+        </div>
+        
+        <div class="practice-card">
+          <VintageBadge size="sm" color="teal">
+            <span class="practice-icon">🤖</span>
+          </VintageBadge>
+          <PrintBlock rotate={true}>
+            <h3>100% AI-WRITTEN</h3>
+            <p>
+              Every line including this page written by AI agents.
+              Humans guide, AI implements.
+            </p>
+          </PrintBlock>
+        </div>
+        
+        <div class="practice-card">
+          <VintageBadge size="sm" color="gold">
+            <span class="practice-icon">🌊</span>
+          </VintageBadge>
+          <PrintBlock rotate={true}>
+            <h3>OPEN LICENSING</h3>
+            <p>
+              Data & results: Public domain. Code: Non-commercial only.
+              Free for community use, restricted for profit.
+            </p>
+          </PrintBlock>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contributing -->
+  <section class="cta-section">
+    <div class="vintage-container">
+      <VintageBadge size="lg" color="gold" animate={true}>
+        <h2>JOIN THE VOYAGE</h2>
+        <p class="cta-text">
+          Help us liberate food security data. Code licensed for non-commercial use only.
+          All data outputs released to public domain.
+        </p>
+        <div class="cta-buttons">
+          <a 
+            href="https://github.com/For-The-Greater-Good" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-vintage"
+          >
+            SOURCE CODE
+          </a>
+          <a 
+            href="https://github.com/For-The-Greater-Good/pantry-pirate-radio/blob/main/README.md" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-vintage btn-vintage-alt"
+          >
+            READ DOCS
+          </a>
+        </div>
+      </VintageBadge>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .tech-hero {
+    padding: var(--space-2xl) 0;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: var(--font-scale-2xl);
+    margin-bottom: var(--space-sm);
+    text-shadow: 2px 2px 0 var(--ocean-teal);
+  }
+  
+  .hero-frequency {
+    font-size: var(--font-scale-xl);
+    color: var(--ocean-teal);
+    font-family: 'Courier New', monospace;
+    font-weight: 900;
+    margin: var(--space-sm) 0;
+  }
+  
+  .hero-tagline {
+    font-size: var(--font-scale-base);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--ink-soft);
+  }
+  
+  .tech-manifesto {
+    max-width: 800px;
+    margin: var(--space-2xl) auto 0;
+    text-align: center;
+    transform: rotate(0.3deg);
+  }
+  
+  .manifesto-title {
+    font-size: var(--font-scale-xl);
+    color: var(--rust-orange);
+    margin-bottom: var(--space-md);
+    text-shadow: 2px 2px 0 var(--ink-black);
+  }
+  
+  .manifesto-divider {
+    font-size: var(--font-scale-lg);
+    margin: var(--space-md) 0;
+    color: var(--ocean-teal);
+  }
+  
+  .manifesto-text {
+    font-size: var(--font-scale-base);
+    line-height: 1.4;
+    color: var(--ink-black);
+  }
+  
+  /* Story Chapters */
+  .story-chapter {
+    padding: var(--space-2xl) 0;
+    position: relative;
+  }
+  
+  .story-chapter.alt-bg {
+    background: linear-gradient(180deg, transparent 0%, rgba(240, 220, 192, 0.3) 50%, transparent 100%);
+  }
+  
+  .section-title {
+    font-size: var(--font-scale-2xl);
+    text-align: center;
+    color: var(--ink-black);
+    text-shadow: 3px 3px 0 var(--mustard-gold);
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-2xl);
+  }
+  
+  .story-block {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    transform: rotate(-0.2deg);
+  }
+  
+  .story-chapter:nth-child(odd) .story-block {
+    transform: rotate(0.3deg);
+  }
+  
+  .story-content h3 {
+    font-size: var(--font-scale-xl);
+    color: var(--ocean-teal);
+    margin-bottom: var(--space-md);
+    text-shadow: 2px 2px 0 var(--ink-black);
+  }
+  
+  .story-content p {
+    font-size: var(--font-scale-base);
+    line-height: 1.6;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .tech-detail {
+    background: var(--ink-black);
+    color: var(--vintage-cream);
+    padding: var(--space-lg);
+    margin-top: var(--space-lg);
+    border: 2px dashed var(--rust-orange);
+  }
+  
+  .tech-detail h4 {
+    font-size: var(--font-scale-base);
+    color: var(--mustard-gold);
+    margin-bottom: var(--space-md);
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+  
+  .tech-detail ul {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-md) 0;
+  }
+  
+  .tech-detail li {
+    padding: var(--space-xs) 0;
+    font-size: var(--font-scale-sm);
+    border-bottom: 1px dashed var(--ink-soft);
+  }
+  
+  .code-example {
+    background: var(--paper-dark);
+    padding: var(--space-md);
+    margin: var(--space-md) 0;
+    overflow-x: auto;
+  }
+  
+  .code-example pre {
+    margin: 0;
+  }
+  
+  .code-example code {
+    font-family: 'Courier New', monospace;
+    font-size: var(--font-scale-sm);
+    color: var(--mustard-gold);
+    background: transparent;
+    display: block;
+  }
+  
+  .explanation {
+    font-size: var(--font-scale-sm);
+    color: var(--ocean-teal);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .validation-flow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+  
+  .flow-step {
+    border-left: 4px solid var(--mustard-gold);
+    padding-left: var(--space-md);
+  }
+  
+  .flow-step strong {
+    display: block;
+    color: var(--ocean-teal);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .flow-step code {
+    display: block;
+    background: var(--paper-dark);
+    padding: var(--space-sm);
+    margin: var(--space-sm) 0;
+    color: var(--mustard-gold);
+    font-size: var(--font-scale-xs);
+  }
+  
+  .output-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+  
+  .output-item {
+    border-top: 3px solid var(--ocean-teal);
+    padding-top: var(--space-md);
+  }
+  
+  .output-item strong {
+    display: block;
+    color: var(--mustard-gold);
+    margin-bottom: var(--space-sm);
+  }
+  
+  /* API Endpoints */
+  .api-endpoints {
+    background: var(--paper-dark);
+    padding: var(--space-md);
+    margin: var(--space-lg) 0;
+    font-family: 'Courier New', monospace;
+    border: 2px dashed var(--ocean-teal);
+  }
+  
+  .api-endpoints code {
+    display: block;
+    padding: var(--space-xs) 0;
+    font-size: var(--font-scale-sm);
+    color: var(--mustard-gold);
+  }
+  
+  /* Infrastructure Section */
+  .infrastructure-section {
+    padding: var(--space-2xl) 0;
+    background: var(--paper-light);
+  }
+  
+  .docker-ship {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    transform: rotate(0.2deg);
+  }
+  
+  .ship-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+  
+  .docker-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+  
+  .ship-header h3 {
+    font-size: var(--font-scale-xl);
+    color: var(--ocean-teal);
+    text-shadow: 2px 2px 0 var(--ink-black);
+  }
+  
+  .ship-description {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    font-size: var(--font-scale-base);
+    line-height: 1.4;
+  }
+  
+  .docker-services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+  }
+  
+  .service-list h4,
+  .command-list h4 {
+    font-size: var(--font-scale-base);
+    color: var(--rust-orange);
+    margin-bottom: var(--space-md);
+    text-shadow: 1px 1px 0 var(--ink-black);
+  }
+  
+  .service-list ul,
+  .command-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .service-list li,
+  .command-list li {
+    padding: var(--space-xs) 0;
+    font-size: var(--font-scale-sm);
+  }
+  
+  .service-list code,
+  .command-list code {
+    background: var(--mustard-gold);
+    color: var(--ink-black);
+    padding: 2px 6px;
+    font-weight: 700;
+    font-size: var(--font-scale-xs);
+  }
+  
+  /* Practices Section */
+  .practices-section {
+    padding: var(--space-2xl) 0;
+    background: var(--vintage-cream);
+  }
+  
+  .practice-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+  
+  .practice-icon {
+    font-size: 1.5rem;
+  }
+  
+  .practice-card h3 {
+    font-size: var(--font-scale-base);
+    color: var(--ink-black);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .practice-card p {
+    font-size: var(--font-scale-sm);
+    text-align: center;
+    line-height: 1.4;
+  }
+  
+  /* CTA Section */
+  .cta-section {
+    padding: var(--space-2xl) 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(240, 220, 192, 0.3) 100%);
+    display: flex;
+    justify-content: center;
+  }
+  
+  .cta-section h2 {
+    font-size: var(--font-scale-xl);
+    margin-bottom: var(--space-md);
+  }
+  
+  .cta-text {
+    font-size: var(--font-scale-base);
+    margin-bottom: var(--space-lg);
+    max-width: 400px;
+    line-height: 1.4;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .btn-vintage-alt {
+    background: var(--ocean-teal);
+    color: var(--vintage-cream);
+  }
+  
+  .btn-vintage-alt:hover {
+    background: var(--rust-orange);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .validation-flow {
+      grid-template-columns: 1fr;
+    }
+    
+    .output-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .docker-services {
+      grid-template-columns: 1fr;
+    }
+    
+    .practice-card {
+      margin-bottom: var(--space-xl);
+    }
+  }
+</style>
