@@ -1,0 +1,276 @@
+---
+import { getAvailableLanguages, getLangFromUrl } from '../i18n/config';
+
+const currentLang = getLangFromUrl(Astro.url);
+const currentPath = Astro.url.pathname;
+const availableLanguages = getAvailableLanguages();
+
+// Only show if we have multiple languages
+const showTuner = availableLanguages.length > 1;
+
+// Create frequency options with vintage radio theme
+const frequencies = [
+  { 
+    code: 'en', 
+    frequency: '88.5 FM',
+    station: 'FTGG Classic',
+    tagline: 'Original Broadcast'
+  },
+  { 
+    code: 'es', 
+    frequency: '92.3 FM',
+    station: 'Radio Libre',
+    tagline: 'Transmisión en Español'
+  },
+  { 
+    code: 'corp', 
+    frequency: '101.7 FM',
+    station: 'Executive Channel',
+    tagline: 'Premium Business Radio'
+  },
+  { 
+    code: 'pirate', 
+    frequency: '66.6 FM',
+    station: 'Pirate Radio',
+    tagline: 'Unauthorized Broadcast'
+  }
+].filter(freq => availableLanguages.includes(freq.code));
+
+// Generate URLs for each frequency
+const stations = frequencies.map(freq => {
+  let url = currentPath;
+  
+  if (currentPath.match(/^\/[a-z]+\//)) {
+    url = currentPath.replace(/^\/[a-z]+\//, freq.code === 'en' ? '/' : `/${freq.code}/`);
+  } else if (freq.code !== 'en') {
+    const cleanPath = currentPath === '/' ? '' : currentPath;
+    url = `/${freq.code}${cleanPath}`;
+  }
+  
+  return {
+    ...freq,
+    url,
+    current: freq.code === currentLang
+  };
+});
+---
+
+{showTuner && (
+  <section class="frequency-tuner">
+    <div class="vintage-container">
+      <div class="tuner-box print-block">
+        <div class="tuner-header">
+          <h3 class="tuner-title">📻 TUNE YOUR FREQUENCY</h3>
+          <p class="tuner-subtitle">Select your preferred broadcast channel</p>
+        </div>
+        
+        <div class="station-grid">
+          {stations.map((station) => (
+            <a 
+              href={station.url}
+              class={`station-card ${station.current ? 'on-air' : ''}`}
+              title={station.tagline}
+            >
+              <div class="frequency-display">{station.frequency}</div>
+              <div class="station-name">{station.station}</div>
+              <div class="station-tagline">{station.tagline}</div>
+              {station.current && <div class="on-air-indicator">ON AIR</div>}
+            </a>
+          ))}
+        </div>
+        
+        <div class="tuner-footer">
+          <span class="static-noise">▓▒░</span>
+          <span class="tuner-hint">Try a different personality!</span>
+          <span class="static-noise">░▒▓</span>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .frequency-tuner {
+    padding: var(--space-xl) 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(240, 220, 192, 0.2) 50%, transparent 100%);
+  }
+  
+  .tuner-box {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    transform: rotate(-0.3deg);
+    background: var(--vintage-cream);
+    border: var(--border-thick);
+    box-shadow: var(--shadow-print);
+  }
+  
+  .tuner-header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .tuner-title {
+    font-size: var(--font-scale-xl);
+    color: var(--rust-orange);
+    margin-bottom: var(--space-sm);
+    text-shadow: 2px 2px 0 var(--ink-black);
+    letter-spacing: -0.02em;
+  }
+  
+  .tuner-subtitle {
+    font-size: var(--font-scale-sm);
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .station-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-md);
+    margin: var(--space-xl) 0;
+  }
+  
+  .station-card {
+    position: relative;
+    padding: var(--space-md);
+    background: var(--ink-black);
+    border: 3px solid var(--ink-black);
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    transform: rotate(0.5deg);
+  }
+  
+  .station-card:nth-child(even) {
+    transform: rotate(-0.5deg);
+  }
+  
+  .station-card:hover {
+    transform: rotate(0deg) scale(1.05);
+    background: var(--mustard-gold);
+    border-color: var(--rust-orange);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .station-card.on-air {
+    background: var(--ocean-teal);
+    border-color: var(--ocean-teal);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { 
+      box-shadow: 0 0 0 0 rgba(0, 184, 148, 0.7);
+    }
+    50% { 
+      box-shadow: 0 0 0 10px rgba(0, 184, 148, 0);
+    }
+  }
+  
+  .frequency-display {
+    font-size: var(--font-scale-lg);
+    font-weight: 900;
+    color: var(--mustard-gold);
+    font-family: 'Courier New', monospace;
+    margin-bottom: var(--space-xs);
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+  }
+  
+  .station-card:hover .frequency-display {
+    color: var(--ink-black);
+    text-shadow: none;
+  }
+  
+  .station-card.on-air .frequency-display {
+    color: var(--vintage-cream);
+  }
+  
+  .station-name {
+    font-size: var(--font-scale-base);
+    font-weight: 700;
+    color: var(--vintage-cream);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-xs);
+  }
+  
+  .station-card:hover .station-name {
+    color: var(--ink-black);
+  }
+  
+  .station-tagline {
+    font-size: var(--font-scale-xs);
+    color: var(--vintage-cream);
+    opacity: 0.8;
+    font-style: italic;
+  }
+  
+  .station-card:hover .station-tagline {
+    color: var(--ink-black);
+    opacity: 1;
+  }
+  
+  .on-air-indicator {
+    position: absolute;
+    top: var(--space-xs);
+    right: var(--space-xs);
+    background: var(--rust-orange);
+    color: var(--vintage-cream);
+    padding: 2px 6px;
+    font-size: var(--font-scale-xs);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--vintage-cream);
+    animation: blink 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+  
+  .tuner-footer {
+    text-align: center;
+    margin-top: var(--space-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+  }
+  
+  .tuner-hint {
+    font-size: var(--font-scale-sm);
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+  
+  .static-noise {
+    font-family: 'Courier New', monospace;
+    color: var(--ink-soft);
+    opacity: 0.4;
+    animation: static 0.5s steps(5) infinite;
+  }
+  
+  @keyframes static {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.6; }
+  }
+  
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .station-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    
+    .station-card {
+      padding: var(--space-sm);
+    }
+    
+    .frequency-display {
+      font-size: var(--font-scale-base);
+    }
+  }
+</style>

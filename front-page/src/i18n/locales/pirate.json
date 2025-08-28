@@ -1,0 +1,280 @@
+{
+  "site": {
+    "title": "FTGG Radio",
+    "tagline": "Broadcastin' Grub Security Since 2024",
+    "description": "Fer The Greater Good - Broadcastin' Grub Security Since 2024"
+  },
+  "nav": {
+    "home": "DOCK",
+    "about": "THE CREW",
+    "technology": "SHIP'S GEAR",
+    "docs": "CHARTS",
+    "github": "GITHUB",
+    "frequencies": {
+      "home": "19.3 FM",
+      "about": "17.8 FM",
+      "technology": "96.9 FM",
+      "docs": "84.0 FM",
+      "github": "20.8 FM"
+    }
+  },
+  "home": {
+    "title": "Main Deck",
+    "hero": {
+      "title": "FER THE\nGREATER GOOD",
+      "frequency": "88.5 FM",
+      "tagline": "Broadcastin' Grub Security Since 2024"
+    },
+    "mission": {
+      "title": "UNIFYIN' THE SEVEN SEAS O' RESOURCES",
+      "text": "We be resource aggregation privateers with a simple quest: makin' existin' public treasure truly accessible to all hands. We connect scattered booty through a single, seaworthy interface, because findin' grub shouldn't require searchin' dozens o' uncharted waters.",
+      "quote": "Public treasure be meant fer all hands on deck, not just those who know the secret charts, arrr!"
+    },
+    "stats": {
+      "title": "SIGNAL STRENGTH O' THE FLEET",
+      "locations": {
+        "title": "PORTS O' CALL",
+        "number": "27,849+",
+        "label": "Grub Assistance Havens"
+      },
+      "scrapers": {
+        "title": "TREASURE HUNTERS",
+        "number": "29",
+        "label": "Active Plunderin' Vessels"
+      },
+      "coverage": {
+        "title": "WATERS COVERED",
+        "number": "50",
+        "label": "Territories Broadcastin'"
+      },
+      "breakdown": {
+        "title": "TREASURE SOURCES MANIFEST",
+        "foodBanks": "Regional Grub Stockades",
+        "techPlatforms": "Digital Treasure Maps",
+        "community": "Port Resources",
+        "nationalApi": "Admiral's API"
+      }
+    },
+    "map": {
+      "title": "THE TREASURE MAP",
+      "subtitle": "X marks the spots where hungry souls can find grub, savvy?"
+    },
+    "data": {
+      "title": "EXPLORE THE PLUNDER",
+      "subtitle": "Dive deep into 37,000+ grub assistance ports",
+      "explorer": {
+        "title": "DATASETTE SPYGLASS",
+        "description": "Query our entire treasure chest usin' SQL right from yer crow's nest. Filter by territory, search by provisions type, export to CSV - all the booty at yer fingertips, matey."
+      },
+      "features": {
+        "sql": "Interactive SQL queries, arrr",
+        "locations": "37,000+ ports o' call",
+        "export": "Export to CSV/JSON scrolls",
+        "search": "Full text searchin' fer treasure"
+      },
+      "cta": "EXPLORE THE TREASURE CHEST"
+    },
+    "tech": {
+      "title": "OUR FLEET",
+      "ppr": {
+        "title": "PANTRY PIRATE RADIO",
+        "subtitle": "The Flagship",
+        "description": "Our main plunderin' system that captures and standardizes grub assistance intelligence from multiple sources into HSDS-compliant treasure maps."
+      },
+      "haarrrvest": {
+        "title": "HAARRRVEST",
+        "subtitle": "The Scout Ship",
+        "description": "Interactive treasure explorer and map-makin' platform that makes our collected grub security booty accessible through charts and queryable spyglasses."
+      }
+    },
+    "cta": {
+      "title": "JOIN THE CREW",
+      "text": "We ain't professional code monkeys - we be hobbyist buccaneers usin' AI to solve real problems. If ye can describe the problem, we can solve it together, savvy?",
+      "learnMore": "Learn The Ropes",
+      "viewCode": "View The Code"
+    },
+    "principles": {
+      "privacy": {
+        "title": "NO PERSONAL PLUNDER",
+        "text": "We never collect or stash personal intelligence"
+      },
+      "openData": {
+        "title": "OPEN SEAS DATA",
+        "text": "All treasure be free to plunder, code fer non-commercial sailin' only"
+      },
+      "transparency": {
+        "title": "AI TRANSPARENCY",
+        "text": "Most code be AI-generated and we fly that flag proudly"
+      }
+    }
+  },
+  "about": {
+    "title": "The Crew",
+    "hero": {
+      "title": "THE CREW",
+      "frequency": "92.3 FM",
+      "tagline": "Broadcastin' Truth Since 2024"
+    },
+    "manifesto": {
+      "title": "DIGITAL PIRATES ON THE AIRWAVES",
+      "text": "We sail the seven servers, liberatin' grub security treasure trapped behind corporate fortresses. Like the pirate radio operators of old, we broadcast vital intelligence without permission, without restriction, and without apology, arrr!"
+    },
+    "mission": {
+      "title": "MISSION BROADCAST",
+      "subtitle": "TRANSMITTIN' ON ALL FREQUENCIES",
+      "signal": "SIGNAL: STRONG AS KRAKEN'S GRIP",
+      "message": {
+        "title": "THE MESSAGE IN A BOTTLE",
+        "text1": "Intelligence about where hungry souls can find grub should NEVER be locked in Davy Jones' locker. We sail around Terms of Service blockades and technical reefs to aggregate treasure, standardize it to HSDS spec, and release it into the open seas.",
+        "text2": "Every day, vital intelligence sits scattered across hundreds o' islands in formats harder to access than buried treasure. We be changin' that, one plunderin' run at a time.",
+        "footer": "ALL CODE • ALL TREASURE • ALL FREE • FOREVER, ARRR!"
+      }
+    },
+    "values": {
+      "title": "THE PIRATE CODE",
+      "openness": {
+        "title": "RADICAL OPENNESS",
+        "subtitle": "OPEN SEAS POLICY",
+        "text": "All treasure belongs to everyone - pure public plunder. Our code be licensed fer non-commercial use only, ensurin' it serves the crew, not the East India Company."
+      },
+      "action": {
+        "title": "DIRECT ACTION",
+        "text": "We don't wait fer letters of marque or corporate partnerships. If treasure about grub assistance exists, we'll find it and free it from its chains."
+      },
+      "ai": {
+        "title": "AI-POWERED",
+        "text": "We leverage cuttin'-edge AI to rapidly develop treasure hunters, process booty, and maintain our fleet at minimal doubloons."
+      }
+    },
+    "story": {
+      "title": "THE FTGG SHIP'S LOG",
+      "established": "COMMISSIONED 2024",
+      "chapter1": {
+        "title": "CHAPTER ONE: THE SIGHTIN'",
+        "text1": "It began with a simple sightin' through the spyglass: while merchant companies spend millions o' doubloons on treasure analytics and market intelligence, the souls who need grub assistance often can't find basic charts about where to get provisions.",
+        "text2": "The irony was stark as a moonless night - in an age of intelligence abundance, the most crucial maps fer survival remained locked in the admiral's quarters."
+      },
+      "chapter2": {
+        "title": "CHAPTER TWO: THE BUILD",
+        "text1": "We started by plunderin' a single food bank website. Then another. And another. Soon we realized the scale o' the treasure - and the opportunity.",
+        "text2": "Usin' modern AI tools and open-source cannons, we built a vessel that could automatically discover, capture, and standardize grub assistance intelligence from across the colonies."
+      },
+      "chapter3": {
+        "title": "CHAPTER THREE: THE ARMADA",
+        "text1": "Today, our fleet processes treasure from dozens o' sources across the nation, maintainin' an up-to-date treasure chest of 37,000+ grub assistance ports.",
+        "text2": "Any soul can access our treasure. Any soul can use it. Any soul can build upon it. Treasure be public plunder. Code be free fer non-commercial sailin'."
+      }
+    },
+    "crew": {
+      "title": "THE ANONYMOUS BROTHERHOOD",
+      "subtitle": "WHO WE BE",
+      "text1": "We be hobbyist privateers, not professionals. We be code sailors, data navigators, and activist buccaneers united by a common belief: intelligence about grub assistance should be free as the wind fer all souls.",
+      "text2": "Most of our code be AI-generated, and we fly that flag high. We use technology as a force multiplier to achieve what would take traditional crews moons in just a few tides.",
+      "motto": "Our contributors prefer to remain masked like proper pirates, lettin' the plunder speak fer itself. What matters ain't who we be, but what we're buildin' together on these high seas."
+    },
+    "impact": {
+      "title": "SIGNAL STRENGTH REPORT FROM THE CROW'S NEST",
+      "locations": "Ports Charted",
+      "sources": "Treasure Sources",
+      "states": "Territories Covered",
+      "openData": "Open Seas Data",
+      "message": "Every port we chart, every API anchor point we provide, and every line of code we scribe contributes to a world where findin' grub assistance be as easy as raisin' the Jolly Roger."
+    },
+    "cta": {
+      "title": "JOIN THE BROADCAST CREW",
+      "text": "Whether ye can code, write, design, or just spread the word across the seven seas - there be a frequency fer ye in our quest.",
+      "github": "GITHUB HARBOR",
+      "techSpecs": "SHIP'S SPECS"
+    }
+  },
+  "technology": {
+    "title": "Ship's Gear",
+    "hero": {
+      "title": "SHIP'S SPECS",
+      "frequency": "96.7 FM",
+      "tagline": "The Treasure Journey"
+    },
+    "manifesto": {
+      "title": "PIRATE RADIO ENGINEERING",
+      "text": "Modern rigging fer grub security treasure liberation. Built with open source tools, deployed in containers like proper cargo, and designed fer complete independence from the merchant fleet's infrastructure."
+    },
+    "architecture": {
+      "title": "SIGNAL FLOW CHART",
+      "note": "Every component can be self-hosted in yer own harbor, modified, or replaced. No merchant dependencies. Pure independence fer the treasure liberation quest."
+    },
+    "components": {
+      "title": "BROADCASTIN' EQUIPMENT",
+      "ppr": {
+        "name": "PANTRY PIRATE RADIO",
+        "subtitle": "THE FLAGSHIP TRANSMITTER",
+        "description": "Main treasure aggregation and API system powerin' the entire fleet.",
+        "coreTech": "CORE RIGGING",
+        "keyFeatures": "KEY FEATURES"
+      },
+      "scrapers": {
+        "name": "DATA PLUNDERERS",
+        "subtitle": "THE CROW'S NEST ARRAY",
+        "description": "29 active treasure hunters capturin' grub assistance intelligence from multiple sources.",
+        "scraperTech": "PLUNDERIN' TECH",
+        "dataSources": "TREASURE SOURCES"
+      },
+      "ai": {
+        "name": "AI NAVIGATOR",
+        "subtitle": "THE SIGNAL DECODER",
+        "description": "LLMs align plundered treasure to HSDS charts with deadly accuracy.",
+        "providers": "LLM NAVIGATORS",
+        "pipeline": "TREASURE ROUTE"
+      },
+      "haarrrvest": {
+        "name": "HAARRRVEST",
+        "subtitle": "THE BROADCAST MAST",
+        "description": "Public treasure repository with interactive exploration spyglasses.",
+        "storage": "CARGO HOLD",
+        "visuals": "CHARTS"
+      }
+    },
+    "practices": {
+      "title": "ENGINEERING CODE O' CONDUCT",
+      "testDriven": {
+        "title": "TEST-DRIVEN",
+        "text": "90%+ test coverage requirement. Every feature built with comprehensive tests followin' the red-green-refactor treasure map."
+      },
+      "typeSafety": {
+        "title": "TYPE SAFETY",
+        "text": "Full mypy strict mode. TypeScript fer the crow's nest interface. Catch krakens at development time, not when sailin'."
+      },
+      "aiPowered": {
+        "title": "AI-POWERED",
+        "text": "Leveragin' Claude and GPT-4 fer rapid ship buildin'. AI writes code, humans ensure she's seaworthy."
+      }
+    },
+    "infrastructure": {
+      "title": "DOCKER ARMADA",
+      "subtitle": "CONTAINERIZED FLEET",
+      "description": "Everything runs in containers like proper cargo holds, ensurin' consistency across development, testin', and production waters.",
+      "services": "SHIP SERVICES",
+      "commands": "CAPTAIN'S ORDERS"
+    },
+    "api": {
+      "title": "TRANSMISSION PROTOCOLS",
+      "hsds": "HSDS v3.1.1 COMPLIANCE",
+      "description": "Our API fully implements the Human Services Data Specification, ensurin' compatibility with existin' tools and systems in the social services fleet.",
+      "dataFormats": "TREASURE FORMATS",
+      "accessMethods": "BOARDING METHODS"
+    },
+    "cta": {
+      "title": "BUILD WITH THE CREW",
+      "text": "All our technology be open source and released into the open seas. Clone it, fork it, improve it - no letter of marque needed.",
+      "sourceCode": "SOURCE CODE",
+      "readDocs": "READ THE CHARTS"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 Fer The Greater Good. Released to the Open Seas.",
+    "links": {
+      "github": "GitHub",
+      "api": "API Charts",
+      "data": "Treasure Explorer"
+    }
+  }
+}

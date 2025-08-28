@@ -1,0 +1,358 @@
+---
+import { getAvailableLanguages, getLangFromUrl } from '../i18n/config';
+
+const currentLang = getLangFromUrl(Astro.url);
+const currentPath = Astro.url.pathname;
+const availableLanguages = getAvailableLanguages();
+
+// Only show if we have multiple languages and user hasn't dismissed it
+const showBanner = availableLanguages.length > 1 && currentLang === 'en';
+
+// Create vibe options with fun descriptions
+const vibes = [
+  { 
+    code: 'en', 
+    label: 'Classic', 
+    emoji: '📻', 
+    description: 'Standard broadcast'
+  },
+  { 
+    code: 'es', 
+    label: 'Español', 
+    emoji: '🌎', 
+    description: 'En español'
+  },
+  { 
+    code: 'corp', 
+    label: 'Corporate', 
+    emoji: '💼', 
+    description: 'Synergize your experience'
+  },
+  { 
+    code: 'pirate', 
+    label: 'Pirate', 
+    emoji: '🏴‍☠️', 
+    description: 'Ahoy, matey!'
+  }
+].filter(vibe => availableLanguages.includes(vibe.code));
+
+// Generate URLs for each vibe
+const vibeOptions = vibes.map(vibe => {
+  let url = currentPath;
+  
+  if (currentPath.match(/^\/[a-z]+\//)) {
+    url = currentPath.replace(/^\/[a-z]+\//, vibe.code === 'en' ? '/' : `/${vibe.code}/`);
+  } else if (vibe.code !== 'en') {
+    const cleanPath = currentPath === '/' ? '' : currentPath;
+    url = `/${vibe.code}${cleanPath}`;
+  }
+  
+  return {
+    ...vibe,
+    url,
+    current: vibe.code === currentLang
+  };
+});
+---
+
+{showBanner && (
+  <div class="vibe-selector" id="vibe-selector">
+    <button class="vibe-close" aria-label="Close vibe selector">×</button>
+    
+    <div class="vibe-content">
+      <div class="vibe-prompt">
+        <span class="vibe-icon">🎭</span>
+        <span class="vibe-text">Choose Your Vibe:</span>
+      </div>
+      
+      <div class="vibe-options">
+        {vibeOptions.map((vibe) => (
+          <a 
+            href={vibe.url}
+            class={`vibe-option ${vibe.current ? 'current' : ''}`}
+            title={vibe.description}
+          >
+            <span class="vibe-emoji">{vibe.emoji}</span>
+            <span class="vibe-label">{vibe.label}</span>
+          </a>
+        ))}
+      </div>
+      
+      <div class="vibe-tagline">
+        How do ye want to receive your data today?
+      </div>
+    </div>
+  </div>
+)}
+
+<style>
+  .vibe-selector {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: linear-gradient(135deg, var(--mustard-gold) 0%, var(--rust-orange) 100%);
+    border-bottom: 4px solid var(--ink-black);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    padding: var(--space-sm) var(--space-md);
+    animation: slideDown 0.5s ease-out;
+    font-family: var(--font-condensed);
+  }
+  
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .vibe-close {
+    position: absolute;
+    top: 50%;
+    right: var(--space-md);
+    transform: translateY(-50%);
+    background: var(--ink-black);
+    color: var(--vintage-cream);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+  }
+  
+  .vibe-close:hover {
+    background: var(--vintage-cream);
+    color: var(--ink-black);
+    transform: translateY(-50%) rotate(90deg);
+  }
+  
+  .vibe-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .vibe-prompt {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: var(--font-scale-base);
+    font-weight: 900;
+    color: var(--ink-black);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+  
+  .vibe-icon {
+    font-size: 1.5em;
+    animation: wiggle 2s ease-in-out infinite;
+  }
+  
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+  }
+  
+  .vibe-options {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+  
+  .vibe-option {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) var(--space-md);
+    background: var(--ink-black);
+    color: var(--vintage-cream);
+    text-decoration: none;
+    border: 2px solid var(--ink-black);
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: var(--font-scale-sm);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .vibe-option::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: var(--vintage-cream);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+  }
+  
+  .vibe-option:hover {
+    background: var(--vintage-cream);
+    color: var(--ink-black);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .vibe-option:hover::before {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .vibe-option.current {
+    background: var(--ocean-teal);
+    color: var(--vintage-cream);
+    border-color: var(--ocean-teal);
+    cursor: default;
+  }
+  
+  .vibe-option.current:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .vibe-emoji {
+    font-size: 1.2em;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .vibe-label {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .vibe-tagline {
+    font-size: var(--font-scale-xs);
+    color: var(--ink-black);
+    font-style: italic;
+    opacity: 0.8;
+  }
+  
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .vibe-selector {
+      padding: var(--space-md);
+    }
+    
+    .vibe-content {
+      flex-direction: column;
+      gap: var(--space-md);
+      text-align: center;
+    }
+    
+    .vibe-close {
+      top: var(--space-sm);
+      right: var(--space-sm);
+      transform: none;
+    }
+    
+    .vibe-options {
+      justify-content: center;
+    }
+    
+    .vibe-tagline {
+      margin-top: var(--space-sm);
+    }
+  }
+  
+  /* Hidden state */
+  .vibe-selector.hidden {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
+</style>
+
+<script>
+  // Handle close button and remember preference
+  const selector = document.getElementById('vibe-selector');
+  const closeBtn = document.querySelector('.vibe-close');
+  
+  // Check if user has previously dismissed the banner
+  const dismissed = localStorage.getItem('vibeSelector_dismissed');
+  const lastDismissed = localStorage.getItem('vibeSelector_dismissedTime');
+  
+  // Show again after 24 hours even if dismissed
+  const dayInMs = 24 * 60 * 60 * 1000;
+  const shouldShow = !dismissed || 
+    (lastDismissed && Date.now() - parseInt(lastDismissed) > dayInMs);
+  
+  if (selector && !shouldShow) {
+    selector.style.display = 'none';
+  }
+  
+  if (closeBtn && selector) {
+    closeBtn.addEventListener('click', () => {
+      selector.classList.add('hidden');
+      localStorage.setItem('vibeSelector_dismissed', 'true');
+      localStorage.setItem('vibeSelector_dismissedTime', Date.now().toString());
+      
+      // Remove from DOM after animation
+      setTimeout(() => {
+        selector.style.display = 'none';
+      }, 500);
+    });
+  }
+  
+  // Auto-hide after 30 seconds if not interacted with
+  if (selector) {
+    setTimeout(() => {
+      if (selector && !selector.classList.contains('hidden')) {
+        selector.classList.add('hidden');
+        setTimeout(() => {
+          selector.style.display = 'none';
+        }, 500);
+      }
+    }, 30000);
+  }
+  
+  // Adjust main content padding when banner is visible
+  const mainContent = document.getElementById('main-content');
+  if (selector && mainContent && shouldShow) {
+    // Add extra padding when banner is shown
+    const bannerHeight = selector.offsetHeight;
+    const currentPadding = parseInt(mainContent.style.paddingTop) || 120;
+    mainContent.style.paddingTop = `${currentPadding + bannerHeight}px`;
+    
+    // Reset padding when banner is closed
+    const observer = new MutationObserver(() => {
+      if (selector.classList.contains('hidden') || selector.style.display === 'none') {
+        mainContent.style.paddingTop = '120px';
+        observer.disconnect();
+      }
+    });
+    
+    observer.observe(selector, { 
+      attributes: true, 
+      attributeFilter: ['class', 'style'] 
+    });
+  }
+</script>

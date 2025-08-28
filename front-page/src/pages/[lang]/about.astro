@@ -1,0 +1,566 @@
+---
+import { getStaticPaths as getLanguagePaths, loadTranslations } from '../../i18n/config';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VintageBadge from '../../components/vintage/VintageBadge.astro';
+import PrintBlock from '../../components/vintage/PrintBlock.astro';
+import { createTranslator } from '../../i18n/utils';
+
+export async function getStaticPaths() {
+  return getLanguagePaths();
+}
+
+const { lang } = Astro.params;
+const translations = await loadTranslations(lang);
+const t = createTranslator(translations);
+---
+
+<BaseLayout title={t('about.title', 'About')} lang={lang} translations={translations}>
+  <!-- Hero Section with Radio Station Badge -->
+  <section class="about-hero">
+    <div class="vintage-container">
+      <VintageBadge size="xl" color="teal" animate={true}>
+        <h1 class="hero-title">{t('about.hero.title', 'THE CREW')}</h1>
+        <div class="hero-frequency">92.3 FM</div>
+        <p class="hero-tagline">{t('about.hero.tagline', 'Broadcasting Truth Since 2024')}</p>
+      </VintageBadge>
+      
+      <div class="manifesto-block print-block">
+        <h2 class="manifesto-title">{t('about.manifesto.title', 'DIGITAL PIRATES ON THE AIRWAVES')}</h2>
+        <div class="manifesto-divider">⚓ ⚓ ⚓</div>
+        <p class="manifesto-text">
+          {t('about.manifesto.text', 'We sail the seven servers, liberating food security data trapped behind corporate firewalls. Like the pirate radio operators of old, we broadcast vital information without permission, without restriction, and without apology.')}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Broadcast -->
+  <section class="mission-section">
+    <div class="vintage-container">
+      <div class="broadcast-header">
+        <h2 class="section-title">{t('about.mission.title', 'MISSION BROADCAST')}</h2>
+        <div class="frequency-indicator">{t('about.mission.subtitle', 'TRANSMITTING ON ALL FREQUENCIES')}</div>
+      </div>
+      
+      <div class="vintage-grid vintage-grid-1">
+        <div class="transmission-card print-block">
+          <div class="signal-strength">{t('about.mission.signal', 'SIGNAL: STRONG')}</div>
+          <h3>{t('about.mission.message.title', 'THE MESSAGE')}</h3>
+          <p>
+            {t('about.mission.message.text1', 'Information about where hungry people can find food should NEVER be proprietary. We aggregate publicly available data, standardize it to HSDS spec, and release all data outputs into the public domain. Our code is licensed for non-commercial use.')}
+          </p>
+          <p>
+            {t('about.mission.message.text2', 'Every day, vital information sits scattered across hundreds of websites in formats that are difficult to access. We\'re changing that, one scraper at a time.')}
+          </p>
+          <div class="transmission-footer">
+            {t('about.mission.footer', 'DATA: PUBLIC DOMAIN • CODE: NON-COMMERCIAL • FREE FOR COMMUNITIES')}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values as Radio Dials -->
+  <section class="values-section">
+    <div class="vintage-container">
+      <h2 class="section-title">{t('about.values.title', 'OPERATING PRINCIPLES')}</h2>
+      
+      <div class="vintage-grid vintage-grid-3">
+        <div class="value-station">
+          <VintageBadge size="md" color="rust">
+            <span class="value-icon">🔓</span>
+            <h3>{t('about.values.openness.title', 'RADICAL OPENNESS')}</h3>
+          </VintageBadge>
+          <PrintBlock rotate={true}>
+            <h4>{t('about.values.openness.subtitle', 'OPEN ACCESS')}</h4>
+            <p>
+              {t('about.values.openness.text', 'All data outputs belong to everyone - pure public domain. Our code is licensed for non-commercial use only, ensuring it serves communities, not corporations.')}
+            </p>
+          </PrintBlock>
+        </div>
+        
+        <div class="value-station">
+          <VintageBadge size="md" color="gold">
+            <span class="value-icon">⚡</span>
+            <h3>{t('about.values.action.title', 'DIRECT ACTION')}</h3>
+          </VintageBadge>
+          <PrintBlock rotate={true}>
+            <p>
+              {t('about.values.action.text', 'We don\'t wait for permission or corporate partnerships. If data about food assistance exists, we\'ll find it and free it.')}
+            </p>
+          </PrintBlock>
+        </div>
+        
+        <div class="value-station">
+          <VintageBadge size="md" color="teal">
+            <span class="value-icon">🤖</span>
+            <h3>{t('about.values.ai.title', 'AI-POWERED')}</h3>
+          </VintageBadge>
+          <PrintBlock rotate={true}>
+            <p>
+              {t('about.values.ai.text', 'We leverage cutting-edge AI to rapidly develop scrapers, process data, and maintain infrastructure at minimal cost.')}
+            </p>
+          </PrintBlock>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Origin Story as Vintage Newspaper -->
+  <section class="story-section">
+    <div class="vintage-container">
+      <div class="newspaper-header">
+        <h2 class="newspaper-title">{t('about.story.title', 'THE FTGG CHRONICLE')}</h2>
+        <div class="newspaper-date">{t('about.story.established', 'ESTABLISHED 2024')}</div>
+      </div>
+      
+      <div class="newspaper-columns">
+        <div class="column">
+          <h3 class="column-title">{t('about.story.chapter1.title', 'CHAPTER ONE: THE OBSERVATION')}</h3>
+          <p>
+            {t('about.story.chapter1.text1', 'It began with a simple observation: while corporations spend millions on data analytics and market research, the people who need food assistance often can\'t find basic information about where to get help.')}
+          </p>
+          <p>
+            {t('about.story.chapter1.text2', 'The irony was stark - in an age of information abundance, the most crucial data for survival remained locked away.')}
+          </p>
+        </div>
+        
+        <div class="column">
+          <h3 class="column-title">{t('about.story.chapter2.title', 'CHAPTER TWO: THE BUILD')}</h3>
+          <p>
+            {t('about.story.chapter2.text1', 'We started by scraping a single food bank website. Then another. And another. Soon we realized the scale of the problem - and the opportunity.')}
+          </p>
+          <p>
+            {t('about.story.chapter2.text2', 'Using modern AI tools and open-source technologies, we built a system that could automatically discover, capture, and standardize food assistance data from across the United States.')}
+          </p>
+        </div>
+        
+        <div class="column">
+          <h3 class="column-title">{t('about.story.chapter3.title', 'CHAPTER THREE: THE NETWORK')}</h3>
+          <p>
+            {t('about.story.chapter3.text1', 'Today, our network processes data from dozens of sources across the nation, maintaining an up-to-date repository of 37,000+ food assistance locations.')}
+          </p>
+          <p>
+            {t('about.story.chapter3.text2', 'Anyone can access our data. Anyone can use it. Anyone can build upon it. Data is public domain. Code is free for non-commercial use.')}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Crew -->
+  <section class="crew-section">
+    <div class="vintage-container">
+      <h2 class="section-title">{t('about.crew.title', 'THE ANONYMOUS COLLECTIVE')}</h2>
+      
+      <PrintBlock color="ink" stamp={true}>
+        <h3>{t('about.crew.subtitle', 'WHO WE ARE')}</h3>
+        <p>
+          {t('about.crew.text1', 'We are hobbyists, not professionals. We\'re developers, data scientists, and activists united by a common belief: information about food assistance should be free and accessible to all.')}
+        </p>
+        <p>
+          {t('about.crew.text2', 'Most of our code is AI-generated, and we\'re proud of it. We use technology as a force multiplier to achieve what would take traditional teams months in just days.')}
+        </p>
+        <p class="crew-motto">
+          {t('about.crew.motto', '"Our contributors prefer to remain anonymous, letting the work speak for itself. What matters is not who we are, but what we\'re building together."')}
+        </p>
+      </PrintBlock>
+    </div>
+  </section>
+
+  <!-- Impact Dashboard -->
+  <section class="impact-section">
+    <div class="vintage-container">
+      <h2 class="section-title">{t('about.impact.title', 'SIGNAL STRENGTH REPORT')}</h2>
+      
+      <div class="vintage-grid vintage-grid-4">
+        <PrintBlock color="rust" rotate={true} stamp={true}>
+          <div class="impact-number">37,000+</div>
+          <div class="impact-label">{t('about.impact.locations', 'Locations Mapped')}</div>
+        </PrintBlock>
+        
+        <PrintBlock color="teal" rotate={true} stamp={true}>
+          <div class="impact-number">35+</div>
+          <div class="impact-label">{t('about.impact.sources', 'Data Sources')}</div>
+        </PrintBlock>
+        
+        <PrintBlock color="gold" rotate={true} stamp={true}>
+          <div class="impact-number">50</div>
+          <div class="impact-label">{t('about.impact.states', 'States Covered')}</div>
+        </PrintBlock>
+        
+        <PrintBlock color="ink" rotate={true} stamp={true}>
+          <div class="impact-number">∞</div>
+          <div class="impact-label">{t('about.impact.openData', 'Open Data')}</div>
+        </PrintBlock>
+      </div>
+      
+      <div class="impact-message print-block">
+        <p>
+          {t('about.impact.message', 'Every location we map, every API endpoint we provide, and every line of code we write contributes to a world where finding food assistance is as easy as turning on a radio.')}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join the Revolution -->
+  <section class="cta-section">
+    <div class="vintage-container">
+      <VintageBadge size="lg" color="gold" animate={true}>
+        <h2>{t('about.cta.title', 'JOIN THE BROADCAST')}</h2>
+        <p class="cta-text">
+          {t('about.cta.text', 'Whether you can code, write, design, or just spread the word - there\'s a frequency for you in our mission.')}
+        </p>
+        <div class="cta-buttons">
+          <a href="https://github.com/For-The-Greater-Good" class="btn-vintage" target="_blank" rel="noopener noreferrer">
+            {t('about.cta.github', 'GITHUB STATION')}
+          </a>
+          <a href={`/${lang}/technology`} class="btn-vintage btn-vintage-alt">
+            {t('about.cta.techSpecs', 'TECH SPECS')}
+          </a>
+        </div>
+      </VintageBadge>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .about-hero {
+    padding: var(--space-2xl) 0;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: var(--font-scale-2xl);
+    margin-bottom: var(--space-sm);
+    text-shadow: 2px 2px 0 var(--rust-orange);
+  }
+  
+  .hero-frequency {
+    font-size: var(--font-scale-xl);
+    color: var(--rust-orange);
+    font-family: 'Courier New', monospace;
+    font-weight: 900;
+    margin: var(--space-sm) 0;
+  }
+  
+  .hero-tagline {
+    font-size: var(--font-scale-base);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--ink-soft);
+  }
+  
+  .manifesto-block {
+    max-width: 800px;
+    margin: var(--space-2xl) auto 0;
+    text-align: center;
+    transform: rotate(-0.3deg);
+  }
+  
+  .manifesto-title {
+    font-size: var(--font-scale-xl);
+    color: var(--ocean-teal);
+    margin-bottom: var(--space-md);
+    text-shadow: 2px 2px 0 var(--ink-black);
+  }
+  
+  .manifesto-divider {
+    font-size: var(--font-scale-lg);
+    margin: var(--space-md) 0;
+    color: var(--rust-orange);
+  }
+  
+  .manifesto-text {
+    font-size: var(--font-scale-base);
+    line-height: 1.4;
+    color: var(--ink-black);
+  }
+  
+  /* Mission Section */
+  .mission-section {
+    padding: var(--space-2xl) 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(240, 220, 192, 0.3) 100%);
+  }
+  
+  .broadcast-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+  
+  .section-title {
+    font-size: var(--font-scale-2xl);
+    color: var(--ink-black);
+    text-shadow: 3px 3px 0 var(--mustard-gold);
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .frequency-indicator {
+    font-size: var(--font-scale-sm);
+    color: var(--rust-orange);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+  
+  .transmission-card {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    transform: rotate(0.2deg);
+  }
+  
+  .signal-strength {
+    font-size: var(--font-scale-sm);
+    color: var(--ocean-teal);
+    font-weight: 900;
+    margin-bottom: var(--space-md);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .transmission-card h3 {
+    font-size: var(--font-scale-xl);
+    color: var(--rust-orange);
+    margin-bottom: var(--space-md);
+    text-shadow: 1px 1px 0 var(--ink-black);
+  }
+  
+  .transmission-card p {
+    margin-bottom: var(--space-md);
+    line-height: 1.5;
+  }
+  
+  .transmission-footer {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 3px dashed var(--rust-orange);
+    font-size: var(--font-scale-sm);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ocean-teal);
+  }
+  
+  /* Values Section */
+  .values-section {
+    padding: var(--space-2xl) 0;
+    background: var(--paper-light);
+  }
+  
+  .value-station {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+  
+  .value-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .value-station h3 {
+    font-size: var(--font-scale-base);
+    margin: 0;
+  }
+  
+  .value-station p {
+    font-size: var(--font-scale-sm);
+    line-height: 1.4;
+    text-align: center;
+  }
+  
+  /* Story Section - Newspaper Style */
+  .story-section {
+    padding: var(--space-2xl) 0;
+    background: var(--vintage-cream);
+  }
+  
+  .newspaper-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-md);
+    border-bottom: 4px double var(--ink-black);
+  }
+  
+  .newspaper-title {
+    font-size: var(--font-scale-3xl);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    text-shadow: 3px 3px 0 var(--rust-orange);
+    margin-bottom: var(--space-xs);
+  }
+  
+  .newspaper-date {
+    font-size: var(--font-scale-sm);
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  
+  .newspaper-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-xl);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .column {
+    padding: var(--space-lg);
+    background: var(--paper-light);
+    border: 2px solid var(--ink-black);
+    box-shadow: var(--shadow-print);
+    transform: rotate(-0.5deg);
+  }
+  
+  .column:nth-child(2) {
+    transform: rotate(0.3deg);
+  }
+  
+  .column:nth-child(3) {
+    transform: rotate(-0.2deg);
+  }
+  
+  .column-title {
+    font-size: var(--font-scale-base);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-md);
+    color: var(--ocean-teal);
+    text-shadow: 1px 1px 0 var(--ink-black);
+  }
+  
+  .column p {
+    font-size: var(--font-scale-sm);
+    line-height: 1.4;
+    margin-bottom: var(--space-md);
+    text-align: justify;
+  }
+  
+  /* Crew Section */
+  .crew-section {
+    padding: var(--space-2xl) 0;
+    background: linear-gradient(180deg, rgba(240, 220, 192, 0.3) 0%, transparent 100%);
+  }
+  
+  .crew-section h3 {
+    font-size: var(--font-scale-lg);
+    color: var(--rust-orange);
+    margin-bottom: var(--space-md);
+  }
+  
+  .crew-section p {
+    margin-bottom: var(--space-md);
+    line-height: 1.5;
+  }
+  
+  .crew-motto {
+    font-style: italic;
+    color: var(--ink-soft);
+    padding: var(--space-md);
+    border-left: 4px solid var(--ocean-teal);
+    background: rgba(0, 184, 148, 0.05);
+  }
+  
+  /* Impact Section */
+  .impact-section {
+    padding: var(--space-2xl) 0;
+    background: var(--paper-light);
+  }
+  
+  .impact-number {
+    font-size: var(--font-scale-2xl);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: var(--space-sm);
+    color: var(--ink-black);
+    text-shadow: 2px 2px 0 var(--mustard-gold);
+  }
+  
+  .impact-label {
+    font-size: var(--font-scale-sm);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--ink-soft);
+  }
+  
+  .impact-message {
+    max-width: 700px;
+    margin: var(--space-2xl) auto 0;
+    text-align: center;
+    padding: var(--space-lg);
+    transform: rotate(-0.3deg);
+  }
+  
+  .impact-message p {
+    font-size: var(--font-scale-base);
+    line-height: 1.5;
+  }
+  
+  /* CTA Section */
+  .cta-section {
+    padding: var(--space-2xl) 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(240, 220, 192, 0.3) 100%);
+    display: flex;
+    justify-content: center;
+  }
+  
+  .cta-section h2 {
+    font-size: var(--font-scale-xl);
+    margin-bottom: var(--space-md);
+  }
+  
+  .cta-text {
+    font-size: var(--font-scale-base);
+    margin-bottom: var(--space-lg);
+    max-width: 400px;
+    line-height: 1.4;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .btn-vintage-alt {
+    background: var(--ocean-teal);
+    color: var(--vintage-cream);
+  }
+  
+  .btn-vintage-alt:hover {
+    background: var(--rust-orange);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .newspaper-columns {
+      grid-template-columns: 1fr;
+    }
+    
+    .column {
+      transform: none !important;
+      margin-bottom: var(--space-md);
+    }
+    
+    .value-station {
+      margin-bottom: var(--space-xl);
+    }
+    
+    .impact-number {
+      font-size: var(--font-scale-xl);
+    }
+  }
+</style>

@@ -1,0 +1,280 @@
+{
+  "site": {
+    "title": "Radio FTGG",
+    "tagline": "Transmitiendo Seguridad Alimentaria Desde 2024",
+    "description": "Por El Bien Común - Transmitiendo Seguridad Alimentaria Desde 2024"
+  },
+  "nav": {
+    "home": "INICIO",
+    "about": "ACERCA DE",
+    "technology": "TECNOLOGÍA",
+    "docs": "DOCUMENTOS",
+    "github": "GITHUB",
+    "frequencies": {
+      "home": "19.3 FM",
+      "about": "17.8 FM",
+      "technology": "96.9 FM",
+      "docs": "84.0 FM",
+      "github": "20.8 FM"
+    }
+  },
+  "home": {
+    "title": "Inicio",
+    "hero": {
+      "title": "POR EL\nBIEN COMÚN",
+      "frequency": "88.5 FM",
+      "tagline": "Transmitiendo Seguridad Alimentaria Desde 2024"
+    },
+    "mission": {
+      "title": "UNIFICANDO RECURSOS PÚBLICOS",
+      "text": "Somos especialistas en agregación de recursos con una misión simple: hacer que la información pública existente sea verdaderamente accesible. Conectamos recursos dispersos a través de una interfaz única e intuitiva, porque encontrar ayuda no debería requerir buscar en docenas de sistemas desconectados.",
+      "quote": "¡Los datos públicos deben ser para todos, no solo para quienes conocen los mapas secretos!"
+    },
+    "stats": {
+      "title": "FUERZA DE TRANSMISIÓN",
+      "locations": {
+        "title": "UBICACIONES",
+        "number": "27,849+",
+        "label": "Sitios de Asistencia Alimentaria"
+      },
+      "scrapers": {
+        "title": "RECOLECTORES",
+        "number": "29",
+        "label": "Fuentes de Datos Activas"
+      },
+      "coverage": {
+        "title": "COBERTURA",
+        "number": "50",
+        "label": "Estados Transmitiendo"
+      },
+      "breakdown": {
+        "title": "DESGLOSE DE FUENTES DE DATOS",
+        "foodBanks": "Bancos de Alimentos Regionales",
+        "techPlatforms": "Plataformas Tecnológicas",
+        "community": "Recursos Comunitarios",
+        "nationalApi": "API Nacional"
+      }
+    },
+    "map": {
+      "title": "EL MAPA DEL TESORO",
+      "subtitle": "Las X marcan los lugares donde la gente con hambre puede encontrar comida"
+    },
+    "data": {
+      "title": "EXPLORA LOS DATOS",
+      "subtitle": "Sumérgete en más de 37,000 ubicaciones de asistencia alimentaria",
+      "explorer": {
+        "title": "EXPLORADOR DATASETTE",
+        "description": "Consulta nuestra base de datos completa usando SQL directamente en tu navegador. Filtra por estado, busca por tipo de servicio, exporta a CSV - todos los datos al alcance de tus manos."
+      },
+      "features": {
+        "sql": "Consultas SQL interactivas",
+        "locations": "37,000+ ubicaciones",
+        "export": "Exportar a CSV/JSON",
+        "search": "Búsqueda de texto completo"
+      },
+      "cta": "EXPLORAR LA BASE DE DATOS"
+    },
+    "tech": {
+      "title": "NUESTRA FLOTA",
+      "ppr": {
+        "title": "RADIO PIRATA DE DESPENSA",
+        "subtitle": "El Buque Insignia",
+        "description": "Nuestro sistema principal de agregación de datos que captura y estandariza información de asistencia alimentaria de múltiples fuentes en formato compatible con HSDS."
+      },
+      "haarrrvest": {
+        "title": "HAARRRVEST",
+        "subtitle": "El Explorador",
+        "description": "Plataforma interactiva de exploración y visualización de datos que hace accesibles nuestros datos recolectados de seguridad alimentaria a través de mapas e interfaces consultables."
+      }
+    },
+    "cta": {
+      "title": "ÚNETE A LA TRIPULACIÓN",
+      "text": "No somos programadores profesionales - somos aficionados usando IA para resolver problemas reales. Si puedes describir el problema, podemos resolverlo juntos.",
+      "learnMore": "Aprende Más",
+      "viewCode": "Ver Código"
+    },
+    "principles": {
+      "privacy": {
+        "title": "SIN DATOS PERSONALES",
+        "text": "Nunca recolectamos ni almacenamos información personal"
+      },
+      "openData": {
+        "title": "DATOS ABIERTOS",
+        "text": "Todos los datos son libres de usar, código no comercial"
+      },
+      "transparency": {
+        "title": "TRANSPARENCIA IA",
+        "text": "La mayoría del código es generado por IA y estamos orgullosos de ello"
+      }
+    }
+  },
+  "about": {
+    "title": "Acerca de",
+    "hero": {
+      "title": "LA TRIPULACIÓN",
+      "frequency": "92.3 FM",
+      "tagline": "Transmitiendo la Verdad Desde 2024"
+    },
+    "manifesto": {
+      "title": "PIRATAS DIGITALES EN LAS ONDAS",
+      "text": "Navegamos los siete servidores, liberando datos de seguridad alimentaria atrapados detrás de firewalls corporativos. Como los operadores de radio pirata del pasado, transmitimos información vital sin permiso, sin restricción y sin disculpas."
+    },
+    "mission": {
+      "title": "TRANSMISIÓN DE MISIÓN",
+      "subtitle": "TRANSMITIENDO EN TODAS LAS FRECUENCIAS",
+      "signal": "SEÑAL: FUERTE",
+      "message": {
+        "title": "EL MENSAJE",
+        "text1": "La información sobre dónde las personas con hambre pueden encontrar comida NUNCA debe ser propiedad privada. Evitamos las restricciones de Términos de Servicio y las barreras técnicas para agregar datos, estandarizarlos según las especificaciones HSDS y liberarlos al dominio público.",
+        "text2": "Cada día, información vital permanece dispersa en cientos de sitios web en formatos difíciles de acceder. Estamos cambiando eso, un recolector a la vez.",
+        "footer": "TODO EL CÓDIGO • TODOS LOS DATOS • TODO GRATIS • PARA SIEMPRE"
+      }
+    },
+    "values": {
+      "title": "PRINCIPIOS OPERATIVOS",
+      "openness": {
+        "title": "APERTURA RADICAL",
+        "subtitle": "ACCESO ABIERTO",
+        "text": "Todos los datos pertenecen a todos - puro dominio público. Nuestro código está licenciado solo para uso no comercial, asegurando que sirva a las comunidades, no a las corporaciones."
+      },
+      "action": {
+        "title": "ACCIÓN DIRECTA",
+        "text": "No esperamos permisos ni asociaciones corporativas. Si existen datos sobre asistencia alimentaria, los encontraremos y los liberaremos."
+      },
+      "ai": {
+        "title": "POTENCIADO POR IA",
+        "text": "Aprovechamos IA de vanguardia para desarrollar rápidamente recolectores, procesar datos y mantener infraestructura a un costo mínimo."
+      }
+    },
+    "story": {
+      "title": "LA CRÓNICA FTGG",
+      "established": "ESTABLECIDO 2024",
+      "chapter1": {
+        "title": "CAPÍTULO UNO: LA OBSERVACIÓN",
+        "text1": "Comenzó con una simple observación: mientras las corporaciones gastan millones en análisis de datos e investigación de mercado, las personas que necesitan asistencia alimentaria a menudo no pueden encontrar información básica sobre dónde obtener ayuda.",
+        "text2": "La ironía era evidente - en una era de abundancia de información, los datos más cruciales para la supervivencia permanecían bajo llave."
+      },
+      "chapter2": {
+        "title": "CAPÍTULO DOS: LA CONSTRUCCIÓN",
+        "text1": "Empezamos extrayendo datos de un solo sitio web de banco de alimentos. Luego otro. Y otro. Pronto nos dimos cuenta de la escala del problema - y la oportunidad.",
+        "text2": "Usando herramientas modernas de IA y tecnologías de código abierto, construimos un sistema que podía descubrir, capturar y estandarizar automáticamente datos de asistencia alimentaria de todo Estados Unidos."
+      },
+      "chapter3": {
+        "title": "CAPÍTULO TRES: LA RED",
+        "text1": "Hoy, nuestra red procesa datos de docenas de fuentes en toda la nación, manteniendo un repositorio actualizado de más de 37,000 ubicaciones de asistencia alimentaria.",
+        "text2": "Cualquiera puede acceder a nuestros datos. Cualquiera puede usarlos. Cualquiera puede construir sobre ellos. Los datos son dominio público. El código es gratuito para uso no comercial."
+      }
+    },
+    "crew": {
+      "title": "EL COLECTIVO ANÓNIMO",
+      "subtitle": "QUIÉNES SOMOS",
+      "text1": "Somos aficionados, no profesionales. Somos desarrolladores, científicos de datos y activistas unidos por una creencia común: la información sobre asistencia alimentaria debe ser gratuita y accesible para todos.",
+      "text2": "La mayoría de nuestro código es generado por IA, y estamos orgullosos de ello. Usamos la tecnología como multiplicador de fuerza para lograr en días lo que a los equipos tradicionales les tomaría meses.",
+      "motto": "Nuestros colaboradores prefieren permanecer anónimos, dejando que el trabajo hable por sí mismo. Lo que importa no es quiénes somos, sino lo que estamos construyendo juntos."
+    },
+    "impact": {
+      "title": "INFORME DE FUERZA DE SEÑAL",
+      "locations": "Ubicaciones Mapeadas",
+      "sources": "Fuentes de Datos",
+      "states": "Estados Cubiertos",
+      "openData": "Datos Abiertos",
+      "message": "Cada ubicación que mapeamos, cada punto de acceso API que proporcionamos y cada línea de código que escribimos contribuye a un mundo donde encontrar asistencia alimentaria es tan fácil como encender una radio."
+    },
+    "cta": {
+      "title": "ÚNETE A LA TRANSMISIÓN",
+      "text": "Ya sea que puedas programar, escribir, diseñar o simplemente correr la voz - hay una frecuencia para ti en nuestra misión.",
+      "github": "ESTACIÓN GITHUB",
+      "techSpecs": "ESPECIFICACIONES TÉCNICAS"
+    }
+  },
+  "technology": {
+    "title": "Tecnología",
+    "hero": {
+      "title": "ESPECIFICACIONES TÉCNICAS",
+      "frequency": "96.7 FM",
+      "tagline": "El Viaje de los Datos"
+    },
+    "manifesto": {
+      "title": "INGENIERÍA DE RADIO PIRATA",
+      "text": "Infraestructura moderna para la liberación de datos de seguridad alimentaria. Construido con herramientas de código abierto, desplegado en contenedores y diseñado para completa independencia de la infraestructura corporativa."
+    },
+    "architecture": {
+      "title": "DIAGRAMA DE FLUJO DE SEÑAL",
+      "note": "Cada componente puede ser auto-hospedado, modificado o reemplazado. Sin dependencias corporativas. Pura independencia para la misión de liberación de datos."
+    },
+    "components": {
+      "title": "EQUIPO DE TRANSMISIÓN",
+      "ppr": {
+        "name": "RADIO PIRATA DE DESPENSA",
+        "subtitle": "EL TRANSMISOR INSIGNIA",
+        "description": "Sistema principal de agregación de datos y API que impulsa toda la operación.",
+        "coreTech": "TECNOLOGÍA PRINCIPAL",
+        "keyFeatures": "CARACTERÍSTICAS CLAVE"
+      },
+      "scrapers": {
+        "name": "RECOLECTORES DE DATOS",
+        "subtitle": "EL CONJUNTO DE ANTENAS",
+        "description": "29 recolectores activos capturando datos de asistencia alimentaria de múltiples fuentes.",
+        "scraperTech": "TECNOLOGÍA DE RECOLECCIÓN",
+        "dataSources": "FUENTES DE DATOS"
+      },
+      "ai": {
+        "name": "PROCESADOR IA",
+        "subtitle": "EL DECODIFICADOR DE SEÑAL",
+        "description": "Los LLMs alinean los datos recolectados al esquema HSDS con alta precisión.",
+        "providers": "PROVEEDORES LLM",
+        "pipeline": "PROCESO"
+      },
+      "haarrrvest": {
+        "name": "HAARRRVEST",
+        "subtitle": "LA TORRE DE TRANSMISIÓN",
+        "description": "Repositorio público de datos con herramientas interactivas de exploración.",
+        "storage": "ALMACENAMIENTO",
+        "visuals": "VISUALES"
+      }
+    },
+    "practices": {
+      "title": "ESTÁNDARES DE INGENIERÍA",
+      "testDriven": {
+        "title": "BASADO EN PRUEBAS",
+        "text": "Requisito de cobertura de pruebas del 90%+. Cada característica construida con pruebas exhaustivas siguiendo rojo-verde-refactorizar."
+      },
+      "typeSafety": {
+        "title": "SEGURIDAD DE TIPOS",
+        "text": "Modo estricto completo de mypy. TypeScript para frontend. Captura errores en tiempo de desarrollo, no en tiempo de ejecución."
+      },
+      "aiPowered": {
+        "title": "POTENCIADO POR IA",
+        "text": "Aprovechando Claude y GPT-4 para prototipos rápidos. La IA escribe código, los humanos aseguran la calidad."
+      }
+    },
+    "infrastructure": {
+      "title": "ARMADA DOCKER",
+      "subtitle": "FLOTA CONTENEDORIZADA",
+      "description": "Todo funciona en contenedores, asegurando consistencia en desarrollo, pruebas y producción.",
+      "services": "SERVICIOS",
+      "commands": "COMANDOS"
+    },
+    "api": {
+      "title": "PROTOCOLOS DE TRANSMISIÓN",
+      "hsds": "CUMPLIMIENTO HSDS v3.1.1",
+      "description": "Nuestra API implementa completamente la Especificación de Datos de Servicios Humanos, asegurando compatibilidad con herramientas y sistemas existentes en el ecosistema de servicios sociales.",
+      "dataFormats": "FORMATOS DE DATOS",
+      "accessMethods": "MÉTODOS DE ACCESO"
+    },
+    "cta": {
+      "title": "CONSTRUYE CON NOSOTROS",
+      "text": "Toda nuestra tecnología es de código abierto y liberada al dominio público. Clónala, bifúrcala, mejórala - no se necesita permiso.",
+      "sourceCode": "CÓDIGO FUENTE",
+      "readDocs": "LEER DOCUMENTOS"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 Por El Bien Común. Liberado al Dominio Público.",
+    "links": {
+      "github": "GitHub",
+      "api": "Documentos API",
+      "data": "Explorador de Datos"
+    }
+  }
+}

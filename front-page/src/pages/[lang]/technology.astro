@@ -1,0 +1,777 @@
+---
+import { getStaticPaths as getLanguagePaths, loadTranslations } from '../../i18n/config';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VintageBadge from '../../components/vintage/VintageBadge.astro';
+import PrintBlock from '../../components/vintage/PrintBlock.astro';
+import { createTranslator } from '../../i18n/utils';
+
+export async function getStaticPaths() {
+  return getLanguagePaths();
+}
+
+const { lang } = Astro.params;
+const translations = await loadTranslations(lang);
+const t = createTranslator(translations);
+---
+
+<BaseLayout title={t('technology.title', 'Technology')} lang={lang} translations={translations}>
+  <!-- Hero Section with Tech Badge -->
+  <section class="tech-hero">
+    <div class="vintage-container">
+      <VintageBadge size="xl" color="rust" animate={true}>
+        <h1 class="hero-title">{t('technology.hero.title', 'TECH SPECS')}</h1>
+        <div class="hero-frequency">96.7 FM</div>
+        <p class="hero-tagline">{t('technology.hero.tagline', 'The Data Journey')}</p>
+      </VintageBadge>
+      
+      <div class="tech-manifesto print-block">
+        <h2 class="manifesto-title">{t('technology.manifesto.title', 'HOW WE LIBERATE FOOD DATA')}</h2>
+        <div class="manifesto-divider">⚡ ⚡ ⚡</div>
+        <p class="manifesto-text">
+          {t('technology.manifesto.text', 'Follow the journey of a food resource from scattered website to structured data. Every line of code in this pipeline, including these scrapers, written entirely by AI agents.')}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 1: Data Collection -->
+  <section class="story-chapter">
+    <div class="vintage-container">
+      <h2 class="section-title">{t('technology.chapter1.title', 'CHAPTER 1: THE SCRAPERS')}</h2>
+      
+      <div class="story-block print-block">
+        <div class="story-content">
+          <h3>{t('technology.chapter1.subtitle', 'AI-Written Data Collectors')}</h3>
+          <p>
+            {t('technology.chapter1.text', 'Our journey begins with 35+ scrapers, each one written entirely by AI agents using simple templates. These scrapers inherit from a common ScraperJob base class, sharing utilities that make implementation quick and consistent.')}
+          </p>
+          
+          <div class="tech-detail">
+            <h4>{t('technology.chapter1.template.title', 'THE TEMPLATE SYSTEM')}</h4>
+            <ul>
+              <li>{t('technology.chapter1.template.item1', 'AI agents write scrapers from templates')}</li>
+              <li>{t('technology.chapter1.template.item2', 'Common utilities handle geocoding, grid generation')}</li>
+              <li>{t('technology.chapter1.template.item3', 'Covers continental US (25°N-49°N, -125°W to -67°W)')}</li>
+              <li>{t('technology.chapter1.template.item4', 'Sources: Food banks, community organizations, government programs')}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 2: Deduplication -->
+  <section class="story-chapter alt-bg">
+    <div class="vintage-container">
+      <h2 class="section-title">{t('technology.chapter2.title', 'CHAPTER 2: THE CONTENT STORE')}</h2>
+      
+      <div class="story-block print-block">
+        <div class="story-content">
+          <h3>{t('technology.chapter2.subtitle', 'SHA-256 Deduplication')}</h3>
+          <p>
+            {t('technology.chapter2.text', 'Before any content reaches our expensive LLM processors, it passes through the Content Store. Every piece of scraped data is hashed with SHA-256. If we\'ve seen it before, we skip the LLM entirely - saving significant processing costs.')}
+          </p>
+          
+          <div class="tech-detail">
+            <h4>{t('technology.chapter2.mechanics.title', 'DEDUPLICATION MECHANICS')}</h4>
+            <div class="code-example">
+              <pre><code>{`content_hash = SHA256(scraped_content)
+if content_store.has(content_hash):
+  return cached_result
+else:
+  queue_for_llm_processing()`}</code></pre>
+            </div>
+            <ul>
+              <li>{t('technology.chapter2.mechanics.item1', 'SQLite index with WAL mode for concurrent access')}</li>
+              <li>{t('technology.chapter2.mechanics.item2', 'Stored in HAARRRvest repo for durability')}</li>
+              <li>{t('technology.chapter2.mechanics.item3', 'Prevents duplicate LLM API calls')}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 3: LLM Processing -->
+  <section class="story-chapter">
+    <div class="vintage-container">
+      <h2 class="section-title">{t('technology.chapter3.title', 'CHAPTER 3: THE LLM QUEUE')}</h2>
+      
+      <div class="story-block print-block">
+        <div class="story-content">
+          <h3>{t('technology.chapter3.subtitle', 'Structured Output Magic')}</h3>
+          <p>
+            {t('technology.chapter3.text', 'New content enters the Redis queue where LLM workers pick it up. Using structured output - a technique where we provide the LLM with a strict JSON schema - we ensure consistent, parseable responses that align perfectly with HSDS v3.1.1.')}
+          </p>
+          
+          <div class="tech-detail">
+            <h4>{t('technology.chapter3.structured.title', 'STRUCTURED OUTPUT EXPLAINED')}</h4>
+            <p class="explanation">
+              {t('technology.chapter3.structured.explanation', 'Instead of hoping the LLM returns valid JSON, we enforce it through the API:')}
+            </p>
+            <div class="code-example">
+              <pre><code>{`{
+  "type": "object",
+  "properties": {
+    "organizations": {"type": "array"},
+    "services": {"type": "array"},
+    "locations": {"type": "array"}
+  }
+}`}</code></pre>
+            </div>
+            <ul>
+              <li>{t('technology.chapter3.structured.item1', '184-line prompt template for HSDS alignment')}</li>
+              <li>{t('technology.chapter3.structured.item2', 'Anti-hallucination rules built in')}</li>
+              <li>{t('technology.chapter3.structured.item3', 'Claude CLI and OpenAI HTTP providers')}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 4: Recording -->
+  <section class="story-chapter alt-bg">
+    <div class="vintage-container">
+      <h2 class="section-title">{t('technology.chapter4.title', 'CHAPTER 4: THE RECORDER')}</h2>
+      
+      <div class="story-block print-block">
+        <div class="story-content">
+          <h3>{t('technology.chapter4.subtitle', 'JSON Archives for Time Travel')}</h3>
+          <p>
+            {t('technology.chapter4.text', 'The Content Store updates with LLM results, while the Recorder saves everything to JSON files. These archives can be "replayed" later to rebuild the entire database - like a ship\'s log that can recreate the voyage.')}
+          </p>
+          
+          <div class="tech-detail">
+            <h4>{t('technology.chapter4.replay.title', 'REPLAY CAPABILITY')}</h4>
+            <ul>
+              <li>{t('technology.chapter4.replay.item1', 'Daily directories: outputs/daily/YYYY-MM-DD/')}</li>
+              <li>{t('technology.chapter4.replay.item2', 'Complete job history preserved')}</li>
+              <li>{t('technology.chapter4.replay.item3', 'Database reconstruction from JSON')}</li>
+              <li>{t('technology.chapter4.replay.item4', 'Disaster recovery built-in')}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 5: Validation -->
+  <section class="story-chapter">
+    <div class="vintage-container">
+      <h2 class="section-title">{t('technology.chapter5.title', 'CHAPTER 5: THE VALIDATOR')}</h2>
+      
+      <div class="story-block print-block">
+        <div class="story-content">
+          <h3>{t('technology.chapter5.subtitle', 'Trust But Verify')}</h3>
+          <p>
+            {t('technology.chapter5.text', 'LLM output flows to the Validator, which scrutinizes every field. Using ArcGIS, Nominatim, and US Census geocoding (with intelligent caching to reduce API calls), it ensures coordinates are real and addresses are valid.')}
+          </p>
+          
+          <div class="tech-detail">
+            <h4>{t('technology.chapter5.pipeline.title', 'VALIDATION PIPELINE')}</h4>
+            <div class="validation-flow">
+              <div class="flow-step">
+                <strong>{t('technology.chapter5.pipeline.scoring', 'Confidence Scoring (0-100)')}</strong>
+                <ul>
+                  <li>{t('technology.chapter5.pipeline.score1', 'No coordinates = score 0')}</li>
+                  <li>{t('technology.chapter5.pipeline.score2', 'Test data detected = score 5')}</li>
+                  <li>{t('technology.chapter5.pipeline.score3', 'Placeholder address = -75 points')}</li>
+                  <li>{t('technology.chapter5.pipeline.score4', 'Wrong state = -20 points')}</li>
+                </ul>
+              </div>
+              <div class="flow-step">
+                <strong>{t('technology.chapter5.pipeline.geocoding', 'Geocoding Cascade')}</strong>
+                <code>ArcGIS → Nominatim → Census</code>
+                <p>{t('technology.chapter5.pipeline.cache', 'With TTL cache to minimize API usage')}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 6: Reconciliation -->
+  <section class="story-chapter alt-bg">
+    <div class="vintage-container">
+      <h2 class="section-title">{t('technology.chapter6.title', 'CHAPTER 6: THE RECONCILER')}</h2>
+      
+      <div class="story-block print-block">
+        <div class="story-content">
+          <h3>{t('technology.chapter6.subtitle', 'Creating Truth from Chaos')}</h3>
+          <p>
+            {t('technology.chapter6.text', 'Validated jobs arrive at the Reconciler, which stores them in PostgreSQL with PostGIS extensions. Using HSDS v3.1.1 with custom additions for version tracking and spatial queries, it creates canonical records from multiple sources.')}
+          </p>
+          
+          <div class="tech-detail">
+            <h4>{t('technology.chapter6.hsds.title', 'HSDS + CUSTOM EXTENSIONS')}</h4>
+            <ul>
+              <li><strong>{t('technology.chapter6.hsds.standard', 'Standard HSDS v3.1.1:')}</strong> {t('technology.chapter6.hsds.standardDesc', 'organizations, services, locations')}</li>
+              <li><strong>{t('technology.chapter6.hsds.custom', 'Custom Addition:')}</strong> {t('technology.chapter6.hsds.customDesc', 'Version tracking for all records')}</li>
+              <li><strong>{t('technology.chapter6.hsds.postgis', 'PostGIS Extension:')}</strong> {t('technology.chapter6.hsds.postgisDesc', 'Spatial indexing and queries')}</li>
+              <li>{t('technology.chapter6.hsds.item1', 'Coordinate-based location deduplication')}</li>
+              <li>{t('technology.chapter6.hsds.item2', 'Source-specific + canonical records')}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 7: API -->
+  <section class="story-chapter">
+    <div class="vintage-container">
+      <h2 class="section-title">{t('technology.chapter7.title', 'CHAPTER 7: THE API')}</h2>
+      
+      <div class="story-block print-block">
+        <div class="story-content">
+          <h3>{t('technology.chapter7.subtitle', 'Serving the Liberation')}</h3>
+          <p>
+            {t('technology.chapter7.text', 'The FastAPI application reads from the PostGIS database, serving HSDS-compliant endpoints. Read-only access ensures data integrity while providing powerful geographic queries.')}
+          </p>
+          
+          <div class="api-endpoints">
+            <code>{t('technology.chapter7.endpoint1', 'Find food banks near any location')}</code>
+            <code>{t('technology.chapter7.endpoint2', 'Search by service type or hours')}</code>
+            <code>{t('technology.chapter7.endpoint3', 'Get real-time availability')}</code>
+            <code>{t('technology.chapter7.endpoint4', '37,000+ locations accessible instantly')}</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 8: Publishing -->
+  <section class="story-chapter alt-bg">
+    <div class="vintage-container">
+      <h2 class="section-title">{t('technology.chapter8.title', 'CHAPTER 8: THE BROADCAST')}</h2>
+      
+      <div class="story-block print-block">
+        <div class="story-content">
+          <h3>{t('technology.chapter8.subtitle', 'HAARRRvest Publisher')}</h3>
+          <p>
+            {t('technology.chapter8.text', 'Our final stop: the HAARRRvest Publisher pulls data from the database and generates two critical outputs - an interactive Leaflet map showing all food locations, and a SQLite database for Datasette exploration.')}
+          </p>
+          
+          <div class="tech-detail">
+            <h4>{t('technology.chapter8.outputs.title', 'PUBLIC OUTPUTS')}</h4>
+            <div class="output-grid">
+              <div class="output-item">
+                <strong>{t('technology.chapter8.outputs.map.title', 'Leaflet Map')}</strong>
+                <ul>
+                  <li>{t('technology.chapter8.outputs.map.item1', 'Interactive location markers')}</li>
+                  <li>{t('technology.chapter8.outputs.map.item2', 'Service information popups')}</li>
+                  <li>{t('technology.chapter8.outputs.map.item3', 'GeoJSON data format')}</li>
+                </ul>
+              </div>
+              <div class="output-item">
+                <strong>{t('technology.chapter8.outputs.datasette.title', 'Datasette SQLite')}</strong>
+                <ul>
+                  <li>{t('technology.chapter8.outputs.datasette.item1', 'Browser-based SQL queries')}</li>
+                  <li>{t('technology.chapter8.outputs.datasette.item2', 'CSV/JSON exports')}</li>
+                  <li>{t('technology.chapter8.outputs.datasette.item3', 'Public data exploration')}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Docker Fleet -->
+  <section class="infrastructure-section">
+    <div class="vintage-container">
+      <h2 class="section-title">{t('technology.fleet.title', 'THE FLEET')}</h2>
+      
+      <div class="docker-ship print-block">
+        <div class="ship-header">
+          <img 
+            src="/images/buoy-docker-logo.png" 
+            alt="Buoy Docker Logo" 
+            class="docker-logo"
+          />
+          <h3>{t('technology.fleet.subtitle', 'CONTAINERIZED ARMADA')}</h3>
+        </div>
+        
+        <p class="ship-description">
+          {t('technology.fleet.description', 'Every component sails in its own container, orchestrated by Docker Compose and managed by Buoy.')}
+        </p>
+        
+        <div class="docker-services">
+          <div class="service-list">
+            <h4>{t('technology.fleet.crew.title', 'THE CREW')}</h4>
+            <ul>
+              <li><code>app</code> - {t('technology.fleet.crew.app', 'FastAPI HSDS API')}</li>
+              <li><code>worker</code> - {t('technology.fleet.crew.worker', 'LLM processors')}</li>
+              <li><code>reconciler</code> - {t('technology.fleet.crew.reconciler', 'Deduplication')}</li>
+              <li><code>recorder</code> - {t('technology.fleet.crew.recorder', 'JSON archiver')}</li>
+              <li><code>validator</code> - {t('technology.fleet.crew.validator', 'Data verification')}</li>
+              <li><code>haarrrvest-publisher</code> - {t('technology.fleet.crew.publisher', 'Map generator')}</li>
+              <li><code>db</code> - {t('technology.fleet.crew.db', 'PostgreSQL + PostGIS')}</li>
+              <li><code>cache</code> - {t('technology.fleet.crew.cache', 'Redis queues')}</li>
+            </ul>
+          </div>
+          <div class="command-list">
+            <h4>{t('technology.fleet.commands.title', 'COMMANDS')}</h4>
+            <ul>
+              <li><code>./bouy up --with-init</code></li>
+              <li><code>./bouy test</code></li>
+              <li><code>./bouy scraper --all</code></li>
+              <li><code>./bouy replay</code></li>
+              <li><code>./bouy claude-auth</code></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quality Standards -->
+  <section class="practices-section">
+    <div class="vintage-container">
+      <h2 class="section-title">{t('technology.standards.title', 'ENGINEERING STANDARDS')}</h2>
+      
+      <div class="vintage-grid vintage-grid-3">
+        <div class="practice-card">
+          <VintageBadge size="sm" color="rust">
+            <span class="practice-icon">🧪</span>
+          </VintageBadge>
+          <PrintBlock rotate={true}>
+            <h3>{t('technology.standards.testing.title', 'TEST COVERAGE')}</h3>
+            <p>
+              {t('technology.standards.testing.text', '~80% coverage with ratcheting. pytest, mypy strict, black formatting, ruff linting, bandit security.')}
+            </p>
+          </PrintBlock>
+        </div>
+        
+        <div class="practice-card">
+          <VintageBadge size="sm" color="teal">
+            <span class="practice-icon">🤖</span>
+          </VintageBadge>
+          <PrintBlock rotate={true}>
+            <h3>{t('technology.standards.ai.title', '100% AI-WRITTEN')}</h3>
+            <p>
+              {t('technology.standards.ai.text', 'Every line including this page written by AI agents. Humans guide, AI implements.')}
+            </p>
+          </PrintBlock>
+        </div>
+        
+        <div class="practice-card">
+          <VintageBadge size="sm" color="gold">
+            <span class="practice-icon">🌊</span>
+          </VintageBadge>
+          <PrintBlock rotate={true}>
+            <h3>{t('technology.standards.licensing.title', 'OPEN LICENSING')}</h3>
+            <p>
+              {t('technology.standards.licensing.text', 'Data & results: Public domain. Code: Non-commercial only. Free for community use, restricted for profit.')}
+            </p>
+          </PrintBlock>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contributing -->
+  <section class="cta-section">
+    <div class="vintage-container">
+      <VintageBadge size="lg" color="gold" animate={true}>
+        <h2>{t('technology.cta.title', 'JOIN THE VOYAGE')}</h2>
+        <p class="cta-text">
+          {t('technology.cta.text', 'Help us liberate food security data. Code licensed for non-commercial use only. All data outputs released to public domain.')}
+        </p>
+        <div class="cta-buttons">
+          <a 
+            href="https://github.com/For-The-Greater-Good" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-vintage"
+          >
+            {t('technology.cta.sourceCode', 'SOURCE CODE')}
+          </a>
+          <a 
+            href="https://github.com/For-The-Greater-Good/pantry-pirate-radio/blob/main/README.md" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-vintage btn-vintage-alt"
+          >
+            {t('technology.cta.readDocs', 'READ DOCS')}
+          </a>
+        </div>
+      </VintageBadge>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .tech-hero {
+    padding: var(--space-2xl) 0;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: var(--font-scale-2xl);
+    margin-bottom: var(--space-sm);
+    text-shadow: 2px 2px 0 var(--ocean-teal);
+  }
+  
+  .hero-frequency {
+    font-size: var(--font-scale-xl);
+    color: var(--ocean-teal);
+    font-family: 'Courier New', monospace;
+    font-weight: 900;
+    margin: var(--space-sm) 0;
+  }
+  
+  .hero-tagline {
+    font-size: var(--font-scale-base);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--ink-soft);
+  }
+  
+  .tech-manifesto {
+    max-width: 800px;
+    margin: var(--space-2xl) auto 0;
+    text-align: center;
+    transform: rotate(0.3deg);
+  }
+  
+  .manifesto-title {
+    font-size: var(--font-scale-xl);
+    color: var(--rust-orange);
+    margin-bottom: var(--space-md);
+    text-shadow: 2px 2px 0 var(--ink-black);
+  }
+  
+  .manifesto-divider {
+    font-size: var(--font-scale-lg);
+    margin: var(--space-md) 0;
+    color: var(--ocean-teal);
+  }
+  
+  .manifesto-text {
+    font-size: var(--font-scale-base);
+    line-height: 1.4;
+    color: var(--ink-black);
+  }
+  
+  /* Story Chapters */
+  .story-chapter {
+    padding: var(--space-2xl) 0;
+    position: relative;
+  }
+  
+  .story-chapter.alt-bg {
+    background: linear-gradient(180deg, transparent 0%, rgba(240, 220, 192, 0.3) 50%, transparent 100%);
+  }
+  
+  .section-title {
+    font-size: var(--font-scale-2xl);
+    text-align: center;
+    color: var(--ink-black);
+    text-shadow: 3px 3px 0 var(--mustard-gold);
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-2xl);
+  }
+  
+  .story-block {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    transform: rotate(-0.2deg);
+  }
+  
+  .story-chapter:nth-child(odd) .story-block {
+    transform: rotate(0.3deg);
+  }
+  
+  .story-content h3 {
+    font-size: var(--font-scale-xl);
+    color: var(--ocean-teal);
+    margin-bottom: var(--space-md);
+    text-shadow: 2px 2px 0 var(--ink-black);
+  }
+  
+  .story-content p {
+    font-size: var(--font-scale-base);
+    line-height: 1.6;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .tech-detail {
+    background: var(--ink-black);
+    color: var(--vintage-cream);
+    padding: var(--space-lg);
+    margin-top: var(--space-lg);
+    border: 2px dashed var(--rust-orange);
+  }
+  
+  .tech-detail h4 {
+    font-size: var(--font-scale-base);
+    color: var(--mustard-gold);
+    margin-bottom: var(--space-md);
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+  
+  .tech-detail ul {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-md) 0;
+  }
+  
+  .tech-detail li {
+    padding: var(--space-xs) 0;
+    font-size: var(--font-scale-sm);
+    border-bottom: 1px dashed var(--ink-soft);
+  }
+  
+  .code-example {
+    background: var(--paper-dark);
+    padding: var(--space-md);
+    margin: var(--space-md) 0;
+    overflow-x: auto;
+  }
+  
+  .code-example pre {
+    margin: 0;
+  }
+  
+  .code-example code {
+    font-family: 'Courier New', monospace;
+    font-size: var(--font-scale-sm);
+    color: var(--mustard-gold);
+    background: transparent;
+    display: block;
+  }
+  
+  .explanation {
+    font-size: var(--font-scale-sm);
+    color: var(--ocean-teal);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .validation-flow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+  
+  .flow-step {
+    border-left: 4px solid var(--mustard-gold);
+    padding-left: var(--space-md);
+  }
+  
+  .flow-step strong {
+    display: block;
+    color: var(--ocean-teal);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .flow-step code {
+    display: block;
+    background: var(--paper-dark);
+    padding: var(--space-sm);
+    margin: var(--space-sm) 0;
+    color: var(--mustard-gold);
+    font-size: var(--font-scale-xs);
+  }
+  
+  .output-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+  
+  .output-item {
+    border-top: 3px solid var(--ocean-teal);
+    padding-top: var(--space-md);
+  }
+  
+  .output-item strong {
+    display: block;
+    color: var(--mustard-gold);
+    margin-bottom: var(--space-sm);
+  }
+  
+  /* API Endpoints */
+  .api-endpoints {
+    background: var(--paper-dark);
+    padding: var(--space-md);
+    margin: var(--space-lg) 0;
+    font-family: 'Courier New', monospace;
+    border: 2px dashed var(--ocean-teal);
+  }
+  
+  .api-endpoints code {
+    display: block;
+    padding: var(--space-xs) 0;
+    font-size: var(--font-scale-sm);
+    color: var(--mustard-gold);
+  }
+  
+  /* Infrastructure Section */
+  .infrastructure-section {
+    padding: var(--space-2xl) 0;
+    background: var(--paper-light);
+  }
+  
+  .docker-ship {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    transform: rotate(0.2deg);
+  }
+  
+  .ship-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+  
+  .docker-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+  
+  .ship-header h3 {
+    font-size: var(--font-scale-xl);
+    color: var(--ocean-teal);
+    text-shadow: 2px 2px 0 var(--ink-black);
+  }
+  
+  .ship-description {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    font-size: var(--font-scale-base);
+    line-height: 1.4;
+  }
+  
+  .docker-services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+  }
+  
+  .service-list h4,
+  .command-list h4 {
+    font-size: var(--font-scale-base);
+    color: var(--rust-orange);
+    margin-bottom: var(--space-md);
+    text-shadow: 1px 1px 0 var(--ink-black);
+  }
+  
+  .service-list ul,
+  .command-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .service-list li,
+  .command-list li {
+    padding: var(--space-xs) 0;
+    font-size: var(--font-scale-sm);
+  }
+  
+  .service-list code,
+  .command-list code {
+    background: var(--mustard-gold);
+    color: var(--ink-black);
+    padding: 2px 6px;
+    font-weight: 700;
+    font-size: var(--font-scale-xs);
+  }
+  
+  /* Practices Section */
+  .practices-section {
+    padding: var(--space-2xl) 0;
+    background: var(--vintage-cream);
+  }
+  
+  .practice-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+  
+  .practice-icon {
+    font-size: 1.5rem;
+  }
+  
+  .practice-card h3 {
+    font-size: var(--font-scale-base);
+    color: var(--ink-black);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .practice-card p {
+    font-size: var(--font-scale-sm);
+    text-align: center;
+    line-height: 1.4;
+  }
+  
+  /* CTA Section */
+  .cta-section {
+    padding: var(--space-2xl) 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(240, 220, 192, 0.3) 100%);
+    display: flex;
+    justify-content: center;
+  }
+  
+  .cta-section h2 {
+    font-size: var(--font-scale-xl);
+    margin-bottom: var(--space-md);
+  }
+  
+  .cta-text {
+    font-size: var(--font-scale-base);
+    margin-bottom: var(--space-lg);
+    max-width: 400px;
+    line-height: 1.4;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .btn-vintage-alt {
+    background: var(--ocean-teal);
+    color: var(--vintage-cream);
+  }
+  
+  .btn-vintage-alt:hover {
+    background: var(--rust-orange);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .validation-flow {
+      grid-template-columns: 1fr;
+    }
+    
+    .output-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .docker-services {
+      grid-template-columns: 1fr;
+    }
+    
+    .practice-card {
+      margin-bottom: var(--space-xl);
+    }
+  }
+</style>

@@ -1,0 +1,280 @@
+{
+  "site": {
+    "title": "FTGG Solutions",
+    "tagline": "Delivering Food Security Intelligence Since 2024",
+    "description": "For The Greater Good - Enterprise Food Security Data Solutions"
+  },
+  "nav": {
+    "home": "HOME",
+    "about": "ABOUT US",
+    "technology": "SOLUTIONS",
+    "docs": "RESOURCES",
+    "github": "REPOSITORY",
+    "frequencies": {
+      "home": "19.3 FM",
+      "about": "17.8 FM",
+      "technology": "96.9 FM",
+      "docs": "84.0 FM",
+      "github": "20.8 FM"
+    }
+  },
+  "home": {
+    "title": "Home",
+    "hero": {
+      "title": "OPTIMIZING\nSOCIAL IMPACT",
+      "frequency": "88.5 FM",
+      "tagline": "Enterprise Food Security Data Solutions"
+    },
+    "mission": {
+      "title": "STREAMLINING RESOURCE DISCOVERY",
+      "text": "We are industry-leading resource aggregation specialists committed to enhancing data accessibility. Our innovative platform consolidates disparate information silos through a unified, user-centric interface, reducing friction in the resource discovery process.",
+      "quote": "Democratizing access to public data assets through strategic digital transformation initiatives."
+    },
+    "stats": {
+      "title": "KEY PERFORMANCE INDICATORS",
+      "locations": {
+        "title": "COVERAGE",
+        "number": "27,849+",
+        "label": "Service Delivery Points"
+      },
+      "scrapers": {
+        "title": "INTEGRATIONS",
+        "number": "29",
+        "label": "Data Pipeline Connectors"
+      },
+      "coverage": {
+        "title": "MARKET REACH",
+        "number": "50",
+        "label": "States Serviced"
+      },
+      "breakdown": {
+        "title": "DATA SOURCE PORTFOLIO",
+        "foodBanks": "Regional Distribution Centers",
+        "techPlatforms": "Digital Platform Partners",
+        "community": "Community Stakeholders",
+        "nationalApi": "Federal Data Integration"
+      }
+    },
+    "map": {
+      "title": "GEOGRAPHIC INTELLIGENCE DASHBOARD",
+      "subtitle": "Comprehensive visualization of food assistance service delivery points"
+    },
+    "data": {
+      "title": "BUSINESS INTELLIGENCE PORTAL",
+      "subtitle": "Access our comprehensive database of 37,000+ service locations",
+      "explorer": {
+        "title": "DATASETTE ANALYTICS SUITE",
+        "description": "Leverage advanced SQL capabilities for real-time data analysis. Generate custom reports, perform complex queries, and export datasets in multiple formats to support your decision-making processes."
+      },
+      "features": {
+        "sql": "Enterprise SQL analytics",
+        "locations": "37,000+ data points",
+        "export": "Multi-format export capabilities",
+        "search": "Advanced search functionality"
+      },
+      "cta": "ACCESS ANALYTICS PORTAL"
+    },
+    "tech": {
+      "title": "OUR SOLUTIONS PORTFOLIO",
+      "ppr": {
+        "title": "PANTRY INTELLIGENCE PLATFORM",
+        "subtitle": "Enterprise Core Solution",
+        "description": "Our flagship data orchestration platform that seamlessly integrates and standardizes food assistance information from multiple stakeholders into HSDS-compliant formats."
+      },
+      "haarrrvest": {
+        "title": "HAARRRVEST ANALYTICS",
+        "subtitle": "Data Visualization Suite",
+        "description": "Best-in-class business intelligence platform providing interactive dashboards and advanced analytics capabilities for food security data insights."
+      }
+    },
+    "cta": {
+      "title": "PARTNERSHIP OPPORTUNITIES",
+      "text": "We leverage cutting-edge AI technologies to deliver innovative solutions. Partner with us to transform your organization's approach to social impact data management.",
+      "learnMore": "Explore Solutions",
+      "viewCode": "Technical Documentation"
+    },
+    "principles": {
+      "privacy": {
+        "title": "PRIVACY COMPLIANCE",
+        "text": "GDPR and CCPA compliant data practices"
+      },
+      "openData": {
+        "title": "OPEN ARCHITECTURE",
+        "text": "Flexible licensing models for enterprise and non-profit sectors"
+      },
+      "transparency": {
+        "title": "AI-DRIVEN INNOVATION",
+        "text": "Leveraging machine learning for operational excellence"
+      }
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "hero": {
+      "title": "OUR COMPANY",
+      "frequency": "92.3 FM",
+      "tagline": "Delivering Excellence Since 2024"
+    },
+    "manifesto": {
+      "title": "DIGITAL TRANSFORMATION LEADERS",
+      "text": "We are pioneering the next generation of food security intelligence platforms, breaking down data silos and creating seamless information ecosystems that drive measurable social impact."
+    },
+    "mission": {
+      "title": "CORPORATE MISSION",
+      "subtitle": "DELIVERING VALUE ACROSS ALL CHANNELS",
+      "signal": "PERFORMANCE: OPTIMAL",
+      "message": {
+        "title": "OUR VALUE PROPOSITION",
+        "text1": "We believe critical infrastructure data should be universally accessible. Our platform transcends traditional barriers through innovative data aggregation strategies, standardization protocols, and strategic distribution partnerships.",
+        "text2": "In today's fragmented digital landscape, vital information remains scattered across multiple platforms. We're revolutionizing data accessibility through our proprietary integration framework.",
+        "footer": "COMPREHENSIVE SOLUTIONS • STRATEGIC PARTNERSHIPS • MEASURABLE IMPACT"
+      }
+    },
+    "values": {
+      "title": "CORE VALUES",
+      "openness": {
+        "title": "RADICAL TRANSPARENCY",
+        "subtitle": "OPEN ECOSYSTEM",
+        "text": "Our commitment to open data principles ensures maximum stakeholder value. Strategic licensing models optimize for both social impact and sustainable operations."
+      },
+      "action": {
+        "title": "AGILE EXECUTION",
+        "text": "We employ rapid deployment methodologies and lean operational frameworks to deliver continuous value to our stakeholders."
+      },
+      "ai": {
+        "title": "AI-FIRST STRATEGY",
+        "text": "Leveraging state-of-the-art artificial intelligence to achieve unprecedented operational efficiency and scale."
+      }
+    },
+    "story": {
+      "title": "CORPORATE TIMELINE",
+      "established": "FOUNDED 2024",
+      "chapter1": {
+        "title": "PHASE ONE: MARKET ANALYSIS",
+        "text1": "Our journey began with identifying a critical market inefficiency: while enterprises invest billions in data analytics, end-users struggle to access basic service information.",
+        "text2": "This presented a unique opportunity to create value through strategic data democratization initiatives."
+      },
+      "chapter2": {
+        "title": "PHASE TWO: SOLUTION DEVELOPMENT",
+        "text1": "We initiated a comprehensive platform development strategy, beginning with targeted proof-of-concept implementations.",
+        "text2": "Utilizing agile methodologies and AI-accelerated development cycles, we architected a scalable solution capable of processing heterogeneous data sources into standardized outputs."
+      },
+      "chapter3": {
+        "title": "PHASE THREE: MARKET DEPLOYMENT",
+        "text1": "Today, our platform processes data from multiple enterprise partners nationwide, maintaining a comprehensive repository exceeding 37,000 validated service locations.",
+        "text2": "Our flexible API architecture and licensing models enable seamless integration for both enterprise and non-profit stakeholders."
+      }
+    },
+    "crew": {
+      "title": "LEADERSHIP TEAM",
+      "subtitle": "OUR EXPERTISE",
+      "text1": "Our team comprises seasoned professionals and innovative technologists united by a shared vision of transforming food security data management.",
+      "text2": "We leverage AI-assisted development methodologies to achieve industry-leading time-to-market metrics while maintaining exceptional quality standards.",
+      "motto": "Our focus remains on delivering measurable outcomes and creating sustainable value for all stakeholders in the food security ecosystem."
+    },
+    "impact": {
+      "title": "PERFORMANCE METRICS",
+      "locations": "Locations Indexed",
+      "sources": "Data Partners",
+      "states": "Market Coverage",
+      "openData": "Open Standards",
+      "message": "Every integration point, API endpoint, and data standardization protocol contributes to our vision of frictionless information access in the social services sector."
+    },
+    "cta": {
+      "title": "STRATEGIC PARTNERSHIPS",
+      "text": "Whether you're seeking integration capabilities, consulting services, or strategic collaboration - we offer comprehensive solutions tailored to your organization's needs.",
+      "github": "TECHNICAL RESOURCES",
+      "techSpecs": "SOLUTION ARCHITECTURE"
+    }
+  },
+  "technology": {
+    "title": "Solutions",
+    "hero": {
+      "title": "TECHNICAL ARCHITECTURE",
+      "frequency": "96.7 FM",
+      "tagline": "Enterprise Data Pipeline"
+    },
+    "manifesto": {
+      "title": "ENTERPRISE INFRASTRUCTURE",
+      "text": "Best-in-class technology stack for food security data management. Built on industry-standard frameworks, deployed via containerization, and architected for complete platform independence."
+    },
+    "architecture": {
+      "title": "SYSTEM ARCHITECTURE OVERVIEW",
+      "note": "Fully scalable microservices architecture supporting on-premise, cloud, or hybrid deployment models with zero vendor lock-in."
+    },
+    "components": {
+      "title": "TECHNOLOGY STACK",
+      "ppr": {
+        "name": "DATA ORCHESTRATION PLATFORM",
+        "subtitle": "CORE INFRASTRUCTURE",
+        "description": "Enterprise-grade data aggregation and API management system powering all platform operations.",
+        "coreTech": "TECHNOLOGY",
+        "keyFeatures": "CAPABILITIES"
+      },
+      "scrapers": {
+        "name": "INTEGRATION CONNECTORS",
+        "subtitle": "DATA PIPELINE",
+        "description": "29 production-ready connectors enabling seamless data ingestion from heterogeneous sources.",
+        "scraperTech": "INTEGRATION TECH",
+        "dataSources": "DATA PARTNERS"
+      },
+      "ai": {
+        "name": "ML PROCESSING ENGINE",
+        "subtitle": "INTELLIGENT AUTOMATION",
+        "description": "Advanced machine learning models ensure high-fidelity data alignment with HSDS specifications.",
+        "providers": "ML PLATFORMS",
+        "pipeline": "WORKFLOW"
+      },
+      "haarrrvest": {
+        "name": "ANALYTICS DASHBOARD",
+        "subtitle": "BUSINESS INTELLIGENCE",
+        "description": "Enterprise BI platform with advanced visualization and self-service analytics capabilities.",
+        "storage": "DATA WAREHOUSE",
+        "visuals": "DASHBOARDS"
+      }
+    },
+    "practices": {
+      "title": "DEVELOPMENT STANDARDS",
+      "testDriven": {
+        "title": "QUALITY ASSURANCE",
+        "text": "Industry-leading 90%+ code coverage. Comprehensive testing protocols ensuring enterprise reliability."
+      },
+      "typeSafety": {
+        "title": "TYPE-SAFE ARCHITECTURE",
+        "text": "Full static typing across all codebases. TypeScript and mypy strict mode for maximum reliability."
+      },
+      "aiPowered": {
+        "title": "AI-ACCELERATED DEVELOPMENT",
+        "text": "Leveraging Claude and GPT-4 for rapid prototyping and code generation with human oversight."
+      }
+    },
+    "infrastructure": {
+      "title": "CONTAINERIZED DEPLOYMENT",
+      "subtitle": "DOCKER ORCHESTRATION",
+      "description": "Fully containerized microservices ensuring consistency across development, staging, and production environments.",
+      "services": "MICROSERVICES",
+      "commands": "DEPLOYMENT"
+    },
+    "api": {
+      "title": "INTEGRATION PROTOCOLS",
+      "hsds": "HSDS v3.1.1 CERTIFIED",
+      "description": "Our RESTful API architecture fully implements Human Services Data Specification standards, ensuring seamless interoperability with existing enterprise systems.",
+      "dataFormats": "SUPPORTED FORMATS",
+      "accessMethods": "INTEGRATION OPTIONS"
+    },
+    "cta": {
+      "title": "IMPLEMENTATION SERVICES",
+      "text": "Our solutions are available through flexible licensing models. Contact our enterprise sales team for customized deployment options.",
+      "sourceCode": "DEVELOPER PORTAL",
+      "readDocs": "DOCUMENTATION CENTER"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 For The Greater Good Solutions. All Rights Reserved.",
+    "links": {
+      "github": "Developer Portal",
+      "api": "API Documentation",
+      "data": "Analytics Dashboard"
+    }
+  }
+}
