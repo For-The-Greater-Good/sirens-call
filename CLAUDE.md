@@ -4,128 +4,145 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-Sirens Call is the public-facing website for the For The Greater Good (FTGG) organization. It's an Astro-based static site with a vintage pirate/maritime theme, providing information about the food security data aggregation mission and showcasing the HAARRRvest interactive map.
+Sirens Call contains two separate Astro-based websites for the For The Greater Good (FTGG) organization:
+- **front-page**: Main pirate-themed public website (for-the-gg.org) with vintage maritime aesthetic
+- **docs-site**: Technical documentation using Starlight (docs.for-the-gg.org)
 
 ## Commands
 
-### Development
+### Front Page Development
 ```bash
-# Install dependencies
+cd front-page
 npm install
+npm run dev                 # http://localhost:4321
+npm run build               # Production build to ./dist/
+npm run preview             # Preview production build
+```
 
-# Start development server
-npm run dev                  # Runs on http://localhost:4321
-
-# Build for production
-npm run build               # Outputs to ./dist/
-
-# Preview production build
-npm run preview
+### Documentation Site Development
+```bash
+cd docs-site
+npm install
+npm run dev                 # http://localhost:4321
+npm run build               # Production build to ./dist/
+npm run preview             # Preview production build
 ```
 
 ### Docker Development
 ```bash
-# Development with Docker Compose
-docker compose up dev       # Starts dev server on port 4321
+# Start both development servers with hot reload
+docker compose --profile dev up
+# front-page: http://localhost:4321
+# docs-site: http://localhost:4322
 
-# Production with Docker Compose  
-docker compose up prod      # Starts Nginx server on port 8080
+# Production containers (nginx)
+docker compose up front-page-prod docs-site-prod -d
 
-# Build production Docker image
-docker build -t sirens-call .
+# Full production with Cloudflare tunnel
+export CLOUDFLARE_TUNNEL_TOKEN=your-token
+docker compose up -d
 ```
 
 ## Project Structure
 
-### Key Directories
-- `src/pages/` - Astro page components (routes)
-- `src/components/` - Reusable UI components
-  - `vintage/` - Vintage-themed components (badges, print blocks, etc.)
-- `src/layouts/` - Page layout templates
-- `src/styles/` - Global CSS and vintage design system
-- `public/` - Static assets served directly
-- `dist/` - Production build output (git-ignored)
+```
+sirens-call/
+├── front-page/             # Main website (pirate theme)
+│   ├── src/
+│   │   ├── pages/         # Route components with i18n support
+│   │   ├── components/    # UI components including vintage/
+│   │   ├── layouts/       # Page templates
+│   │   ├── styles/        # global.css, vintage.css
+│   │   └── i18n/          # Internationalization config
+│   └── public/            # Static assets
+├── docs-site/              # Documentation (Starlight)
+│   ├── src/
+│   │   ├── content/       # MDX documentation files
+│   │   └── styles/        # docs.css customizations
+│   └── public/            # Static assets
+└── .docker/               # Shared Docker configs
+    ├── Dockerfile         # Multi-stage build for both sites
+    └── nginx.conf         # Production server config
+```
 
 ### Technology Stack
-- **Framework**: Astro (static site generator)
-- **Styling**: Tailwind CSS v4 + Custom vintage CSS design system
-- **Deployment**: Docker + Nginx for production
+- **Framework**: Astro 5.13+ (both sites)
+- **Documentation**: Starlight (docs-site)
+- **Styling**: Tailwind CSS v4 (front-page), custom vintage design system
+- **i18n**: Multiple locales including pirate speak (front-page)
+- **Deployment**: Docker + Nginx + Cloudflare Tunnels
 - **Node Version**: 20 (Alpine in Docker)
 
 ## Architecture
 
-### Component Architecture
-The site uses Astro components (`.astro` files) with a vintage/maritime theme system:
+### Front Page Components
+The front-page uses vintage/maritime themed Astro components:
+- **BaseLayout**: Main layout with Navigation and Footer
+- **Vintage Components** (`src/components/vintage/`):
+  - `VintageBadge`: Decorative badges with icons
+  - `PrintBlock`: Newspaper-style content blocks
+  - `RadioWave`: Animated transmission effects
+- **Interactive Elements**:
+  - `RadioDialNav`: Radio dial-themed navigation
+  - `VibeSelector`: Theme/vibe switcher
+  - `FrequencyTuner`: Interactive radio tuner
+  - `MapEmbed`: HAARRRvest map integration
+- **i18n Support**: LanguageSwitcher with pirate speak option
 
-1. **BaseLayout** - Main layout wrapper with navigation and footer
-2. **Vintage Components** - Themed UI elements:
-   - `VintageBadge` - Decorative badges with icons
-   - `PrintBlock` - Newspaper-style content blocks
-   - `RadioDialNav` - Radio dial-themed navigation
-   - `MapEmbed` - HAARRRvest map integration
+### Docs Site Components
+Documentation uses Starlight with custom components:
+- **Starlight Extensions** (`src/components/starlight/`):
+  - Custom footer, hero, sidebar, search components
+- **MDX Content** with collapsible sections plugin
+- **Structured documentation** for API, scrapers, architecture
 
 ### Styling System
-- Global styles in `src/styles/global.css` (imports Tailwind and vintage.css)
-- Vintage design tokens for colors, typography, spacing
-- Component-scoped styles within `.astro` files
-- Print-inspired effects and textures
+- **Front Page**: Vintage design system (see StyleGuide.md)
+  - Custom CSS variables for weathered colors
+  - Print-inspired typography and textures
+  - Radio/maritime visual motifs
+- **Docs Site**: Starlight theme with custom overrides
 
-### Pages
-- `/` - Homepage with mission, stats, map, and technology overview
-- `/about` - Organization background and principles
-- `/technology` - Technical architecture details
+### Internationalization
+Front-page supports multiple locales:
+- `en`: English (default)
+- `es`: Spanish
+- `pirate`: Pirate speak
+- `corp`: Corporate speak
+- Routing: `[lang]` prefix for non-default locales
 
 ## Development Patterns
 
-### Adding New Pages
-1. Create `.astro` file in `src/pages/`
-2. Use `BaseLayout` for consistent structure
-3. Import and use vintage components for theming
-4. Follow existing component style patterns
+### Working with Front Page
+- Follow vintage design principles from StyleGuide.md
+- Maintain centered, badge-like compositions
+- Use weathered colors and print effects
+- Test all locales when adding content
 
-### Component Guidelines
-- Keep vintage/maritime theme consistent
-- Use design tokens from vintage.css
-- Prefer Astro components over framework components
-- Add component-scoped styles within `<style>` tags
+### Working with Docs Site
+- Write documentation in MDX format
+- Place in appropriate `src/content/docs/` subdirectory
+- Follow existing sidebar structure in astro.config.mjs
+- Use collapsible sections for lengthy content
 
-### Static Assets
-- Place images in `public/images/`
-- Reference as `/images/filename.ext` in components
-- Favicon and logos already configured
-
-## Deployment
-
-### Local Production Build
-```bash
-npm run build
-npm run preview
+### Docker Build Process
+The shared Dockerfile uses build args to determine which site to build:
+```dockerfile
+ARG APP_NAME=front-page  # or docs-site
 ```
 
-### Docker Production
-```bash
-docker compose up prod
-```
-
-The Nginx configuration (`nginx.conf`) handles:
-- Static file serving with caching
-- Security headers
-- Gzip compression
-- SPA routing fallback
-
-## Integration Points
-
-### HAARRRvest Map
-The `MapEmbed` component integrates the food location map from the HAARRRvest project via iframe embedding.
-
-### External Links
-- GitHub organization: https://github.com/For-The-Greater-Good
-- Related projects linked in navigation
+## Testing
+Currently no test framework configured. When adding tests:
+- Consider Vitest for unit tests (Astro compatible)
+- Playwright for E2E testing
+- Maintain visual consistency with manual testing
 
 ## Important Notes
 
-1. **Pure Static Site** - No server-side rendering or API routes
-2. **Vintage Theme** - Maintain pirate/maritime/newspaper aesthetic
-3. **Mobile Responsive** - All components must work on mobile
-4. **Public Domain** - All code released without restrictions
-5. **No Analytics** - No tracking or personal data collection
+1. **Two Separate Sites** - front-page and docs-site are independent
+2. **Vintage Theme** - Maintain pirate/maritime aesthetic on front-page
+3. **Documentation Standards** - Keep docs technical and clear
+4. **Mobile Responsive** - Test both sites on mobile
+5. **Public Domain** - All code released without restrictions
+6. **No Analytics** - No tracking or personal data collection
+7. **Production Routing** - Cloudflare tunnels handle domain routing

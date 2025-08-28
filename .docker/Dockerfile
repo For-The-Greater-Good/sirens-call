@@ -2,7 +2,7 @@
 # Use build args to determine which site to build
 
 # Build stage
-FROM node:20-alpine AS builder
+FROM node:24-alpine AS builder
 
 # Accept build arg for which app to build
 ARG APP_NAME=front-page
